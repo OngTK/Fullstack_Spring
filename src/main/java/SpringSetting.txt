@@ -1,0 +1,48 @@
+[ Spring_intellij 프로젝트 생성 ]
+1. New Project
+	> Name / Location 자유
+	> Build system : Gradle
+		- 외부 라이브러리 설치·세팅 지원
+	> JDK : coretto-17 Amazon Corretto 17
+	> Gradle DSL :
+		Kotlin : 앱 개발
+		Groovy : 기존 부터 사용되던 언어
+
+2. Gradle 폴더 구조
+Src
+	main
+		java	백앤드
+		resource	프론트·부가소스
+	test
+
+------
+    코끼리 build.gradle : 중요! 직접 라이브러리 설치를 하지 않아도 라이브러리 사용을 가능하게 도와줌
+
+    https://start.spring.io/ >> 스프링 연결 도움
+    Project
+        Gradle - Groovy
+    Language
+        Java
+    Spring Boot
+        3.5.4
+    Project Metadata
+        생략
+    Packing
+        Jar
+    Java
+        17
+
+    Dependencies
+        프로젝트에 설치할 라이브러리
+        MySql Driver 선택
+        + Spring web
+
+
+    Explore > 전체 복사 > 코끼리에 붙여넣기~
+    =======
+
+    [ web ] 환경 설정
+    1. class 상단 ` @SpringBootApplication ] `
+    2. main 안에 `SpringApplication.run(현재클래스명.class)``
+    3. 실행
+    4. 브라우저에 localhost:8080 확인
