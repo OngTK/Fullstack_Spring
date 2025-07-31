@@ -9,16 +9,19 @@
 		Groovy : 기존 부터 사용되던 언어
 
 2. Gradle 폴더 구조
+idea                intellij 세팅파일
 Src
 	main
-		java	백앤드
+		java	    백앤드
 		resource	프론트·부가소스
 	test
-
+build.gradle        라이브러리 세팅 파일
 ------
-    코끼리 build.gradle : 중요! 직접 라이브러리 설치를 하지 않아도 라이브러리 사용을 가능하게 도와줌
+3. 코끼리 build.gradle
+중요! 직접 라이브러리 설치를 하지 않아도 라이브러리 사용을 가능하게 도와줌
 
-    https://start.spring.io/ >> 스프링 연결 도움
+    https://start.spring.io/ >> 스프링 연결
+
     Project
         Gradle - Groovy
     Language
@@ -37,8 +40,7 @@ Src
         MySql Driver 선택
         + Spring web
 
-
-    Explore > 전체 복사 > 코끼리에 붙여넣기~
+    Explore > 전체 복사 > 코끼리에 붙여넣기~ > 새로고치 Ctrl Shift O
     =======
 
     [ web ] 환경 설정

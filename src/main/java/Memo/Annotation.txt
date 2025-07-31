@@ -1,0 +1,20 @@
+
+1. @SpringBootApplication : 스프링 부터 환경 설정
+    1) @SpringBootConfiguration
+        : 프로젝트 내의 @Configuration 어노테이션을 찾아서 bean(객체)를 설정·등록할 수 있도록 함
+    2) @EnableAutoConfiguration
+        : Spring Boot가 자동으로 필요한 bean을 설정·등록
+        : 실행과 동시에 web server에 해당하는 내장형 TomCat을 설정함
+    3) @ComponentScan ☆★☆★
+        : 현재 클래스를 기준, 현재 패키지 및 하위 패키지 내의 컴포넌트(클래스) 등을 자동으로 스캔하여 등록
+            (1) 스캔 대상 : @Component / @RestController / @Controller /
+                           @Service / @Repository / @Mapper etc : 주로 MVC 어노테이션
+            (2) 주의점    : 현 클래스(AppStart)를 기준으로 상위 패키지는 스캔 불가,
+                           따라서 AppStart는 항상 최상위 패키지에 위치해야 한다.
+
+2. @Controller : 컨트롤러 어노테이션
+    1) @Component : Spring 컨테이너(메모리)에 bean을 등록·생성 ☆★싱글톤 대체☆★
+    2) Spring Controller : 기본적으로 HTTP 통신을 지원
+
+
+@ResponseBody : Java가 사용하는 타입을 HTTP 언어의 타입을 자동으로 변환해주는 어노테이션
