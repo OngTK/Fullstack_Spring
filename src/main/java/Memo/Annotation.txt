@@ -60,3 +60,43 @@
 4. @ResponseBody
     : Java가 사용하는 타입을 HTTP 언어인 JSON 타입으로 자동 변환·반환하는 어노테이션
     : Java에서 Method 실행 후 결과를 JSON으로 반환한다면, 해당 함수위에 어노테이션 표기
+
+5. 매개변수
+    1) 특징
+        - HTTP QueryString을 이용한 매개변수 전달
+        - http://localhost:8080/URL정의?param=value
+        - 실행시 value가 param의 값으로 들어오는 것을 알 수 있음
+        - 주의! value는 모두 String 으로 인식 (그래도 자동으로 타입변환 지원~~)
+    2) Annotation
+        (1) @ModelAttribute
+            - 복수 파라미터에 객체를 바인딩
+            - DTO 타입일 때 기본 적용
+            - DTO, VO(읽기모드) 등 만들어진 객체 타입
+            - 처리가능요청 : QueryString, <form : 첨부파일O >
+            - 지원 HTTP메소드 : Get / Post / Put / Delete
+        (2) @RequestParam( )
+            - 단일 파라미터에 변수 바인딩
+            - 함수의 매개변수명과 쿼리스트링의 매개변수명이 일치할 경우 생략가능
+            - 기본형 : List / String / List / Map
+            - 처리가능요청 : QueryString, <form : 첨부파일X >
+            - 지원 HTTP메소드 : Get / Post / Put / Delete
+
+            ① name = "URL매개변수명"
+                - URL상 ? 뒤에 매핑할 매개변수명
+                - Java의 매개변수명과 QueryString의 매개변수명이 동일할 경우, 생략 가능
+            ② defaultValue = "초기값"
+                - 매개변수 생략 시 초기값
+            ③ required = true or false
+                - 매개변수가 없을 경우, 예외 발생
+                - true : 예외 발생
+                - false : 예외 발생 X
+        (3) @RequestBody
+            - 본문(body)를 객체로 바인딩
+                * 본문·body?
+                     - HTTP 본문에 매개변수를 표현
+                     - 매개변수가 노출되지 않음, 보안 안전성
+                     - ex) 비밀번호, 아이디
+                     - Post / Put에 대해서만 객체 지원
+            - DTO 타입에 사용
+            - Body 내에서 사용
+            - 지원 HTTP메소드 : Post / Put 만 사용 가능
