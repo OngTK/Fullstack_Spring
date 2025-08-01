@@ -1,5 +1,24 @@
+```
+[ REST ]
+정의
+    웹의 자원을 관리하는 아키텍처
+특징
+    1. 자원(Resources), 행동(Method), 표현
+    2. HTTP 프로토콜을 이용하여 클라이언트와 서바 간의 일관성있는 통신을 구성
 
-1. @SpringBootApplication : 스프링 부터 환경 설정
+[ REST API ]
+    1. REST 기반의 웹서비스 인터페이스를 구축
+    2. HTTP 요청을 통해 자원(데이터)의 CRUD 기능을 제공
+[ RESTful API ]
+    1. REST API의 아키텍처를 잘 사용하는지에 대한 개념
+    2. 조건
+        1) 일관성 유지
+        2) 적절한 HTTP Method : Post(등록), Get(조회), Put(수정), Delete(삭제)
+        3) 무상태성
+        4) JSON / XML 형식으로 반환
+```
+
+1. @SpringBootApplication : 스프링 부트 환경 설정
     1) @SpringBootConfiguration
         : 프로젝트 내의 @Configuration 어노테이션을 찾아서 bean(객체)를 설정·등록할 수 있도록 함
     2) @EnableAutoConfiguration
@@ -13,8 +32,28 @@
                            따라서 AppStart는 항상 최상위 패키지에 위치해야 한다.
 
 2. @Controller : 컨트롤러 어노테이션
-    1) @Component : Spring 컨테이너(메모리)에 bean을 등록·생성 ☆★싱글톤 대체☆★
+    1) @Component
+        Spring 컨테이너(메모리)에 bean을 등록·생성
+        ☆★싱글톤 대체☆★
     2) Spring Controller : 기본적으로 HTTP 통신을 지원
 
+3. Mapping 관련 : REST
+    1) @PostMapping
+        HTTP method 중 Post 방식의 요청을 매핑
+        → Java Create
+    2) @GetMapping
+        HTTP method 중 get 방식의 요청을 매핑
+        → Java Read
+    3) @PutMapping
+        HTTP method 중 Put 방식의 요청을 매핑
+        → Java Put
+    4) @DeleteMapping
+        HTTP method 중 Delete 방식의 요청을 매핑
+        → Java Delete
+    5) @____Mapping("/URL정의")
+        URL 주소 정의하며 베이스 주소인 [http://localhost:8080] 뒤로 유도할 URL을 Mapping 뒤에 기재
+        한 URL 내에서 CRUD가 중복될 수 없음
 
-@ResponseBody : Java가 사용하는 타입을 HTTP 언어의 타입을 자동으로 변환해주는 어노테이션
+4. @ResponseBody
+    : Java가 사용하는 타입을 HTTP 언어인 JSON 타입으로 자동 변환·반환하는 어노테이션
+    : Java에서 Method 실행 후 결과를 JSON으로 반환한다면, 해당 함수위에 어노테이션 표기
