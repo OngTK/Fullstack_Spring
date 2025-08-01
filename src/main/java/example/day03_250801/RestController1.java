@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@Controller     // 콘트롤러 Annotation
+// @Controller     // 콘트롤러 Annotation
 @RestController // @ResponseBody를 내장하고 있는 새로운 어노테이션!!!!!!
 public class RestController1 {
     
@@ -15,8 +15,9 @@ public class RestController1 {
     @GetMapping("/day03")
         // HTTP를 지원하며, Http Get Method 실행시 연결됨을 주석
         // URL정의 : http://localhost:8080/day03
-    @ResponseBody
+    // @ResponseBody
         // Http 요청 > Java method 실행 및 결과 반환 > 결과를 JSON 타입으로 변환
+        // @RestController를 선언하였으므로, ResponseBody 생략 가능!!
     public String method1(){
         System.out.println("method1 실행");
         return "Hello world!";

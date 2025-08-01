@@ -31,11 +31,14 @@
             (2) 주의점    : 현 클래스(AppStart)를 기준으로 상위 패키지는 스캔 불가,
                            따라서 AppStart는 항상 최상위 패키지에 위치해야 한다.
 
-2. @Controller : 컨트롤러 어노테이션
-    1) @Component
-        Spring 컨테이너(메모리)에 bean을 등록·생성
-        ☆★싱글톤 대체☆★
-    2) Spring Controller : 기본적으로 HTTP 통신을 지원
+2. Controller
+    1) @Controller : 컨트롤러 어노테이션
+        (1) @Component
+            Spring 컨테이너(메모리)에 bean을 등록·생성
+            ☆★싱글톤 대체☆★
+        (2) Spring Controller : 기본적으로 HTTP 통신을 지원
+    2) @RestController
+        기존 Controller에 @ResponseBody를 내장하고 있음
 
 3. Mapping 관련 : REST
     1) @PostMapping
