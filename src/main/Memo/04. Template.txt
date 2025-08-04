@@ -1,0 +1,18 @@
+[ Spring 정적 파일 ]
+    - Spring Project 내 ** HTML·CSS·JS·Img **
+    - 정적 파일은 아래의 경로에 위치
+    - [ src > main > resources > static ]
+
+    1. Spring Project는 정해진 Static 폴더 내 Html 경로를 지원
+
+        http://localhost:8080/(static) 이하 경로 Html으로 접속 가능
+        ex) http://localhost:8080/example/example1.html
+
+[ Spring 동적 파일 ]
+    - Spring Project 내 ** JSP·타임리프·머스테치·REACT **
+        - JSP : Java + Html → MVC1
+        - 타임리프 : Java + html
+        - 머스테치 : Java + html
+        - REACT : JS + Html → MVC2
+    - 동적 파일은 코드 그 자체가 브라우저 해석·랜더링이 불가능
+        >> 정적 파일은 코드 자체로 브라우저에서 랜더링 가능

@@ -9,6 +9,7 @@
 [ REST API ]
     1. REST 기반의 웹서비스 인터페이스를 구축
     2. HTTP 요청을 통해 자원(데이터)의 CRUD 기능을 제공
+
 [ RESTful API ]
     1. REST API의 아키텍처를 잘 사용하는지에 대한 개념
     2. 조건
@@ -16,7 +17,9 @@
         2) 적절한 HTTP Method : Post(등록), Get(조회), Put(수정), Delete(삭제)
         3) 무상태성
         4) JSON / XML 형식으로 반환
+
 ```
+======================================================================================================================
 
 1. @SpringBootApplication : 스프링 부트 환경 설정
     1) @SpringBootConfiguration
@@ -61,7 +64,7 @@
     : Java가 사용하는 타입을 HTTP 언어인 JSON 타입으로 자동 변환·반환하는 어노테이션
     : Java에서 Method 실행 후 결과를 JSON으로 반환한다면, 해당 함수위에 어노테이션 표기
 
-5. 매개변수
+5. 매개변수 관련
     1) 특징
         - HTTP QueryString을 이용한 매개변수 전달
         - http://localhost:8080/URL정의?param=value
@@ -74,10 +77,11 @@
             - DTO, VO(읽기모드) 등 만들어진 객체 타입
             - 처리가능요청 : QueryString, <form : 첨부파일O >
             - 지원 HTTP메소드 : Get / Post / Put / Delete
+
         (2) @RequestParam( )
             - 단일 파라미터에 변수 바인딩
             - 함수의 매개변수명과 쿼리스트링의 매개변수명이 일치할 경우 생략가능
-            - 기본형 : List / String / List / Map
+            - 기본형 : int / String / List / Map
             - 처리가능요청 : QueryString, <form : 첨부파일X >
             - 지원 HTTP메소드 : Get / Post / Put / Delete
 
@@ -90,11 +94,13 @@
                 - 매개변수가 없을 경우, 예외 발생
                 - true : 예외 발생
                 - false : 예외 발생 X
+
         (3) @RequestBody
             - 본문(body)를 객체로 바인딩
                 * 본문·body?
                      - HTTP 본문에 매개변수를 표현
                      - 매개변수가 노출되지 않음, 보안 안전성
+                     - Dto / List / Map tkdyd rksmd
                      - ex) 비밀번호, 아이디
                      - Post / Put에 대해서만 객체 지원
             - DTO 타입에 사용

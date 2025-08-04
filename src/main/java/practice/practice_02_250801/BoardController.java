@@ -84,6 +84,7 @@ public class BoardController {
         for(BoardDto boardDto0 : list){
             if( boardDto0.getBno() == boardDto.getBno() ){
                 boardDto0.setBcontent(boardDto.getBcontent());
+                boardDto0.setBwriter(boardDto0.getBcontent());
                 result = true;
                 break;
             }
