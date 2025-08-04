@@ -16,7 +16,7 @@ public class FetchController {
     // [1] Method : Get / Url : /day04/exam
     @GetMapping("/day04/exam")
     public void method11() {
-        System.out.println("FetchController.method11");
+        System.out.println("FetchController.method1");
     } // func end
 
     // [2] Method : Post / Url : /day04/exam2
