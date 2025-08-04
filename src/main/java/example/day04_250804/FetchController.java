@@ -23,19 +23,19 @@ public class FetchController {
     @PostMapping("/day04/exam2")    // Post
     public void method2() {
         System.out.println("FetchController.method2");
-    }
+    }// func end
 
     // [3] Method : Put / Url : /day04/exam3
     @PutMapping("/day04/exam3")
     public void method3() {
         System.out.println("FetchController.method3");
-    }
+    }// func end
 
     // [4] Method : Delete / Url : /day04/exam4
     @DeleteMapping("/day04/exam4")
     public void method4() {
         System.out.println("FetchController.method4");
-    }
+    }// func end
 
     // 복습 - 매개변수 O, 반환값 O =============================================================
     // 일부러 매개변수 쿼리스트링·Body 와 반환 내용 임의값을 서로 다르게 하였음.
@@ -50,7 +50,7 @@ public class FetchController {
         boolean result = true; //임의값
         System.out.println("result = " + result);
         return result;
-    }
+    }// func end
 
     // [6] 매개변수 : Body / 반환타입 : Json
     //     Body ` {"name":"배두훈","age":39} `
@@ -60,7 +60,7 @@ public class FetchController {
         System.out.println("map = " + map);
         int result = 20; //임의값
         return result;
-    }
+    }// func end
 
     // [7] 매개변수 : Body / 반환타입 : Json
     //     Body ` {"name":"배두훈","age":39} `
@@ -71,7 +71,7 @@ public class FetchController {
         TaskDto result = new TaskDto("배두훈", 40);
         System.out.println("taskDto = " + taskDto);
         return result;
-    }
+    }// func end
 
     // [8] 매개변수 : 쿼리스트링 / 반환타입 : Json
     //      Delete / day04/exam8?name=배두훈&age=39
@@ -82,7 +82,7 @@ public class FetchController {
         List<TaskDto> taskDtoList = new ArrayList<>();
         taskDtoList.add(new TaskDto("강형호",37));
         return taskDtoList;
-    }
+    }// func end
 
 
 } // class end

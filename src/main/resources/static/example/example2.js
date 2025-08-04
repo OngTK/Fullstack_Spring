@@ -7,14 +7,14 @@ console.log("example2.js exe")
 const func1 = () => {
 
     // fetch를 이용한 스프링 controller와 통신하기
-    fetch("http://localhost:8080/day04/exam", { method: "GET" })
+    fetch("/day04/exam", { method: "GET" })
     // GET의 경우 생략 가능 
 
 }
 
 // [2] POST
 const func2 = () => {
-    fetch("http://localhost:8080/day04/exam2", { method: "POST" })
+    fetch("/day04/exam2", { method: "POST" })
 }
 
 // [3] PUT
