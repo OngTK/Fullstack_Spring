@@ -18,4 +18,31 @@
         >> 정적 파일은 코드 자체로 브라우저에서 랜더링 가능
 
 [ fetch 라이브러리 ]
-    -
+    - JS에서 제공하며, 비동기 통신을 지원하는 함수
+
+    - 사용법
+```
+fetch( URL , Option )
+   .then( 응답매개변수 => 응답매개변수.타입)
+   .then( data => { 실행문 } )
+   .catch
+```
+       1) 통신 URL 주소
+       2) 통신 Option
+           (1) { method : "http메소드" }
+                : DELETE·GET 메소드 사용 시, headers / body 생략 가능
+           (2) { method : "http메소드" ,
+                 headers : { "Content-Type" : "application/json" } ,
+                 body : JSON.stringify( { 전달객체 } )     }
+                   - 주로 body·headers를 사용하는 POST, PUT 메소드에서 사용
+                   - header : http body의 타입 설정으로
+                              `{ "Content-Type" : "application/json" }`을 항상 입력
+                   - body : body로 전달할 객체 작성,
+                            JSON 타입변환 필요( JSON.stringify() )
+       3) .then( 응답매개변수 => 응답매개변수.json() )
+           - Java로 부터의 결과, 응답 자료·결과를 Json 타입으로 변환
+           - 응답매개변수는 일반적으로 'response / r'
+       4) .then( data => {실행문;} )
+           - 타입변환된 자료를 매개변수로 받아 실행문 처리
+       5) .catch( error => {실행문;} )
+           - 만약에 fetch 통신 간에 오류가 발생할 경우, 실행문 처리
