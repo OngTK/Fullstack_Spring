@@ -21,7 +21,7 @@ public class BoardController {
 
         // 1~2.
         // AS-IS : 매개변수로 bcontent, bwriter을 받아 BoardDto 객체 생성
-        // TO-BE : @RequestBody 로 HTTP Body를 통해 객체 생성 단계 생략! ☆★☆★☆★
+        // TO-BE : @RequestBody 로 HTTP Body를 통해 객체 생성! ☆★☆★☆★
 
         // 3. 객체화 된 dto를 dao에게 전달후 결과를 받는다.
         boolean result = boardDao.boardWrite( boardDto );
@@ -55,8 +55,8 @@ public class BoardController {
         // 1.유효성검사
         // 2.객체화<선택, 속성이 2개이상 이면서 하나의 dto 표현 가능하면 권장>
         //        BoardDto boardDto = new BoardDto( bno , bcontent , null );
-        // AS-IS : 매개변수로 bcontent, bwriter을 받아 BoardDto 객체 생성
-        // TO-BE : @RequestBody 로 HTTP Body를 통해 객체 생성 단계 생략! ☆★☆★☆★
+        // AS-IS : 매개변수로 bno, bcontent 받아 BoardDto 객체 생성
+        // TO-BE : @RequestBody 로 HTTP Body를 통해 객체 생성! ☆★☆★☆★
 
         // 3. dao에게 삭제할번호 전달후 결과를 받는다.
         boolean result = boardDao.boardUpdate( boardDto );
