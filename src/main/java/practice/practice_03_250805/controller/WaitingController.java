@@ -18,7 +18,7 @@ public class WaitingController {
     // 매개변수 : WaitingDto waitingDto
     // 반환 : boolean
     @PostMapping("/waiting")
-    public boolean waitingRegi(WaitingDto waitingDto) {
+    public boolean waitingRegi(@RequestBody WaitingDto waitingDto) {
         System.out.println("waitingDto = " + waitingDto);
         // [1.1] dto에 waitingRegi 실행
         boolean result = waitingDao.waitingRegi(waitingDto);
@@ -41,7 +41,7 @@ public class WaitingController {
     // 매개변수 : int wno
     // 반환 : boolean
     @DeleteMapping("/waiting")
-    public boolean waitingDelete(int wno) {
+    public boolean waitingDelete( @RequestParam int wno) {
         // [3.1] dao의 waitingDelete 메소드 실행
         boolean result = waitingDao.waitingDelete(wno);
         // [3.2] 결과 반환
@@ -52,7 +52,7 @@ public class WaitingController {
     // 매개변수 : WaitingDto waitingDto
     // 반환 : boolean
     @PutMapping("/waiting")
-    public boolean waitingUpdate(WaitingDto waitingDto) {
+    public boolean waitingUpdate(@RequestBody WaitingDto waitingDto) {
         System.out.println("waitingDto = " + waitingDto);
         //[4.1] dao의 waitingUpdate 실행
         boolean result = waitingDao.waitingUpdate(waitingDto);

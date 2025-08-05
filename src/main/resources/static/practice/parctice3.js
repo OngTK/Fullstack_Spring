@@ -37,13 +37,11 @@ const waitingPrint = () => {
 const waitingDelete = () => {
     console.log("waitingDelete exe")
     // [3.1] 샘플 data
-    let bno = 1;
+    let wno = 2;
     // [3.2] fetch option
-    let option = {
-        method : "DELETE"
-    }
+    let option = { method: "DELETE" }
     // [3.3] fetch 실행
-    fetch("/waiting",option)
+    fetch(`/waiting?wno=${wno}`,option)
         .then(r => r.json())
         .then(d => {console.log(d)})
         .catch(e => {console.log(e)})
