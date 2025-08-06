@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FetchController {
 
     // 비동기 fetch vs 동기 fetch
-    // [1] GET
+    // [1] fetch
     @GetMapping("/day06/exam1")
     public boolean method1(){
         return true; //임의의 반환값
