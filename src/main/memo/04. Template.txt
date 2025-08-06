@@ -32,3 +32,10 @@
             (3) html/jsp 코드 작성
             (4) JSP 파일 최상단 설정 코드 작성
                 `<%@ page language = "java" contentType="text/html ; charset=utf-8" pageEncoding="UTF-8" %>`
+        3) 경로
+            http://localhost:8080/(webapp 폴더 이하 경로)
+
+[ JSP ]
+    Header·Footer 연결
+    html body 내에
+        [<jsp:include page = " "></jsp:include>]
