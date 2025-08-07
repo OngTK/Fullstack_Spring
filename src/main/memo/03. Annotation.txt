@@ -38,7 +38,7 @@
     1) @Controller : 컨트롤러 어노테이션
         (1) @Component
             Spring 컨테이너(메모리)에 bean을 등록·생성
-            ☆★싱글톤 대체☆★
+            ☆★싱글톤 역할을 대체☆★
         (2) Spring Controller : 기본적으로 HTTP 통신을 지원
     2) @RestController
         기존 Controller에 @ResponseBody를 내장하고 있음
@@ -59,6 +59,10 @@
     5) @____Mapping("/URL정의")
         URL 주소 정의하며 베이스 주소인 [http://localhost:8080] 뒤로 유도할 URL을 Mapping 뒤에 기재
         한 URL 내에서 CRUD가 중복될 수 없음
+    6) @RequestMapping("/URL정의")
+        class 위에 선언하며, 해당 클라스의 Mapping 어노테이션 메소드들의 공통 URL을 정의
+        만약 아래의 @RequestMapping에서 URL이 정의되어 있다면,
+        URL은 "/RequestMappingURL/@____MappingURL"으로 연결됨
 
 4. @ResponseBody
     : Java가 사용하는 타입을 HTTP 언어인 JSON 타입으로 자동 변환·반환하는 어노테이션
@@ -106,3 +110,27 @@
             - DTO 타입에 사용
             - Body 내에서 사용
             - 지원 HTTP메소드 : Post / Put 만 사용 가능
+
+[ Lombok 어노테이션 ]
+    1) 정의
+        설계에서 자주 사용하는 코드를 자동 생성해주는 어노테이션
+    2) 설치
+        (1) intelliJ
+            - Plugin > Market > lombok > 설치
+        (2) Gradle 설치
+            https://start.spring.io/
+            > lombok 검색
+            > ```
+            dependencies{
+            compileOnly 'org.projectlombok:lombok'
+            annotationProcessor 'org.projectlombok:lombok'
+            } // dependencies내에 lombok 관련 코드 추가
+            ```
+            > 설치
+    3) 사용
+        (1) in DTO
+            @NoArgsConstructor  : 컴파일 시, 빈 생성자 자동 생성
+            @AllArgsConstructor : 컴파일 시, 전체 생성자 자동 생성
+            @Getter             : getter 자동 생성
+            @Setter             : setter 자동 생성, 생략시 VO(읽기모드)
+            @ToString           : toString 자동 생성
