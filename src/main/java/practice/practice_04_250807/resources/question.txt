@@ -1,0 +1,23 @@
+https://docs.google.com/spreadsheets/d/15DEvkp8JclgHQbBaDilcVJWp--f2NNe5YtdMV2NaIbk/edit?gid=0#gid=0
+
+주제
+연락처 와 인원수를 처리하는 대기번호 JSP웹페이지 구축
+
+기능
+1. 대기 번호 등록 페이지/기능
+   조건 : 대기번호는 자동부여 되며 연락처 와 인원수만 입력받습니다.
+
+2. 대기 현황 전체 조회 페이지/기능
+   조건 : 대기번호,연락처,인원수,등록일 모든 정보를 전체 출력합니다.
+
+기술스택
+JAVA  , DATABASE , *SPRING* , *JSP*
+
+MVC 패턴
+day07 구조와 동일하게 구현 하되 * lombok * 사용합니다.
+
+제출
+-- [ 제출방법 1 ] 카카오톡방에 ip 제출 ( 강사가 체크 할때 까지 서버 켜주세요 )
+-- [ 제출방법 2 ] 코드가 작성된 파일이 위치한 깃허브 상세 주소를 제출하시오.
+
+참고	day52 day07폴더 및 webapp/student폴더
