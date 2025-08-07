@@ -8,12 +8,18 @@
 <body>
     <jsp:include page = "/student/header.jsp"></jsp:include>
 
-    <h3> 본문 페이지 </h3>
-    <div>http://localhost:8080/student/index.jsp</div>
+    <h3> 저장 페이지 </h3>
+    <div>
+        이름 :     <input type="text" class="sname"> <br/>
+        국어점수 : <input type="number" class="skor"><br/>
+        수학점수 : <input type="number" class="smath"><br/> 
+    </div>
+
 
     <button onclick=save()>저장</button>
 
 
-    <script src='student.js'></script>
+
+    <script src='/student/save.js'></script>
 </body>
 </html>

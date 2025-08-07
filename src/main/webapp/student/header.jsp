@@ -12,7 +12,7 @@
     <ol>
         <li><a href="/student/index.jsp">홈</a></li>
         <li><a href="/student/save.jsp">점수등록</a></li>
-        <li><a href="/student/find.jsp">전체등록</a></li>
+        <li><a href="/student/find.jsp">전체조회</a></li>
     </ol>
 
 </body>

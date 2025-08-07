@@ -10,7 +10,7 @@
 
     <h3> 본문 페이지 </h3>
     <div>http://localhost:8080/student/index.jsp</div>
+    <div>http://192.168.40.205:8080/student/index.jsp</div>
 
-    <script src='student.js'></script>
 </body>
 </html>

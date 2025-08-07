@@ -4,6 +4,12 @@
 <head>
     <meta charset='utf-8'>
     <title>find</title>
+    <style>
+        #table{
+            border: 1px black solid;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <jsp:include page = "/student/header.jsp"></jsp:include>
@@ -11,7 +17,7 @@
     <div>
     <h3> 조회 페이지 </h3>
     
-<table border="1">
+<table id="table">
     <thead>
         <tr>
             <th>번호</th>
