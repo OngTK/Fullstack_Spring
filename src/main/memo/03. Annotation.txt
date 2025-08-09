@@ -19,6 +19,38 @@
         4) JSON / XML 형식으로 반환
 
 ```
+
+=====================================================================================================================
+[ Annotation @ ]
+1) 정의
+    Java·Spring에서 코드에 meta date를 추가하는 문법
+2) 목적
+    - 메타데이터 제공
+    - 코드 간소화
+    - 가독성 향상
+3) 종류
+    (1) 표준 어노테이션
+        Java에서 기본적으로 제공하는 어노테이션
+        ① @Override : 상위클래스의 메소드를 재정의
+        ② @Deprecated : 더이상 사용하지 않는 코드
+    (2) 메타 어노테이션
+        코드를 정의하거나 동작을 제어할 때 사용하는 어노테이션
+        ① 서블릿(Java web class)
+        ② 스프링
+4) 생성방법
+    (1) @interface 어노테이션명{}
+        실행문 안에 추상 메소드 선언
+    (2) @interface 위에 다양한 @·어노테이션을 설정
+        ① @Retention() : 어노테이션 생성주기(유지기간)을 설정
+            @Retention( RetentionPolicy.RUNTIME ) : 런타임까지 유지
+            @Retention( RetentionPolicy.CLASS )   : class 파일에 포함 = 런타임이 아닐때도 유지
+            @Retention( RetentionPolicy.RESOURCE) : 컴파일 이후 삭제
+        ② @Target()    : 어노테이션 적용 대상을 설정
+            @Target( ElementType.METHOD )       :  메소드에서 사용
+            @Target( ElementType.TYPE )         :  클래스, 인터페이슷에서 사용
+            @Target( ElementType.FIELD )        :  멤버변수에서 사용
+            @Target( ElementType.PARAMETER )    :  매개변수에서 사용
+            @Target( ElementType.CONSTRUCTOR )  :  생성자에서 사용
 ======================================================================================================================
 
 1. @SpringBootApplication : 스프링 부트 환경 설정
@@ -66,7 +98,7 @@
 
 4. @ResponseBody
     : Java가 사용하는 타입을 HTTP 언어인 JSON 타입으로 자동 변환·반환하는 어노테이션
-    : Java에서 Method 실행 후 결과를 JSON으로 반환한다면, 해당 함수위에 어노테이션 표기
+    : Java에서 Method 실행 후 결과를 JSON으로 반환한다면, 해당 함수 위에 어노테이션 표기
 
 5. 매개변수 관련
     1) 특징

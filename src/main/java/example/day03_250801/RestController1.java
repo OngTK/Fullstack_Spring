@@ -7,7 +7,7 @@ import java.util.Map;
 
 // @Controller     // 콘트롤러 Annotation
 @RestController // @ResponseBody를 내장하고 있는 새로운 어노테이션!!!!!!
-public class RestController1 {
+public class    RestController1 {
     
     // 싱글톤 생략
     // @Controller 내의 @Component가 존재하며, Component가 bean을 생성함
@@ -60,7 +60,6 @@ public class RestController1 {
     public int method3( String name, int age ) {
         System.out.println("RestController1.method3");
         System.out.println("name = " + name + ", age = " + age);
-
         return 3;
     }
 

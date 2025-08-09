@@ -13,4 +13,6 @@ public class WaitingDto {
     private String phone;
     private int count;
 
+    public WaitingDto(int wno, String phone, int count) {
+    }
 }
