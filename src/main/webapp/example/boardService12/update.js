@@ -59,7 +59,7 @@ const boardUpdate = async () => {
     // [3] 결과 반환
     if( d == true ) {
         alert("수정 성공")
-        location.href = "/example/boardService12/list.jsp"
+        location.href = `/example/boardService12/view.jsp?bno=${bno}`
     } else {
         alert("수정 실패")
     }
