@@ -1,0 +1,29 @@
+[ IOC · Inversion Of Control ]
+    : 제어의 역전 · 제어 반전
+    1) 정의
+        - 객체의 생성 및 관리의 제어권을 개발자가 아닌 스프링 프레임워크가 담당함
+        - 컨테이너 : 스프링에서 IOC를 담당하는 저장소
+    2) 목적
+        - 효율적이고 규칙적인 객체 관리·사용을 위해서 스프링이 개발자를 대신하여 IOC를 담당
+        - 여러 사람이 동시에 작업할 경우, 비규칙적인 객체 사용·중복사용 등의 객체 충돌이 발생할 가능성이 높음
+    3) 주요 Annotation
+        @Component : 컨테이너에 클래스 정보·Bean을 등록
+            - 주요 @Component를 내장하고 있는 어노테이션
+            @Controller
+            @RestController
+            @Service
+            @Repository
+            @Configuration etc...
+            - 주로 MVC 패턴은 IOC 기반이며 스프링의 필수이며, @Component는 MVC 패턴 내에서 Bean 등록을 담당
+
+[ DI · Dependency Injection ]
+    : 의존성 주입
+    1) 정의
+        - 객체를 직접 생성하지 않고 외부(컨테이너)로 부터 주입받도록 하는 방법
+    2) 목적
+        - 객체들간의 결합도를 낮추고, 유지보수 편의성을 향상
+    3) 주요 Annotation
+        @Autowired : 스프링 컨테이너에 저장된 bean을 호출
+
+     ※ 싱글톤 호출을 대신함
+     ※ DTO · VO · ENTITY는 DI를 하지 않는다.
