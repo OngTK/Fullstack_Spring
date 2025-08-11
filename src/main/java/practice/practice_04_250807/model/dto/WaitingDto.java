@@ -3,7 +3,7 @@ package practice.practice_04_250807.model.dto;
 import lombok.*;
 
 @NoArgsConstructor          // 빈생성자
-@AllArgsConstructor         // 모든 매개변수 생성자
+@AllArgsConstructor        // 모든 매개변수 생성자 AllArgsConstructor
 @Getter                     // getter
 @Setter                     // setter
 @ToString                   // toString
@@ -13,6 +13,4 @@ public class WaitingDto {
     private String phone;
     private int count;
 
-    public WaitingDto(int wno, String phone, int count) {
-    }
 }
