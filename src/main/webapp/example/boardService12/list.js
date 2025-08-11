@@ -20,7 +20,7 @@ const boardPrint = async () => {
         html += `<tr>
         <td>${data[i].bno}</td>
         <td>${data[i].bwriter}</td>
-        <td><a href="/example/boardService12/boardFind.jsp?bno=${data[i].bno}">${data[i].bcontent}</a></td>
+        <td><a href="/example/boardService12/view.jsp?bno=${data[i].bno}">${data[i].bcontent}</a></td>
         </tr>`
     }
 

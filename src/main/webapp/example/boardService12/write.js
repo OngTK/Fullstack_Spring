@@ -30,14 +30,5 @@ const boardWrite = async () => {
         alert("등록 실패")
     }
 
-    location.href = "/example/boardService12/boardPrint.jsp"
+    location.href = "/example/boardService12/list.jsp"
 }
-
-// [1] html 가져오기
-
-// [2] Fetch 
-// [2.1] data
-// [2.2] option
-// [2.3] fetch
-
-// [3] 결과 반환

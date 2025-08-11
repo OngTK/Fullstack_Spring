@@ -14,7 +14,7 @@
     <div>작성자 <input type = text id="bwriter"></div>
     <button onclick="boardWrite()">등록하기</button>
 
-    <script src="./boardWrite.js"></script>
+    <script src="./write.js"></script>
     
 </body>
 </html>

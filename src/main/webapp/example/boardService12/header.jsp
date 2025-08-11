@@ -29,7 +29,7 @@
             헤더 영역</div>
         <ul>
             <li><a href="/example/boardService12/home.jsp">Home</a></li>
-            <li><a href="/example/boardService12/boardPrint.jsp">게시판</a></li>
+            <li><a href="/example/boardService12/list.jsp">게시판</a></li>
         </ul>
     </div>
 
