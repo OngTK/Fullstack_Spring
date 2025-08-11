@@ -10,9 +10,11 @@
     <jsp:include page = "/example/boardService12/header.jsp"></jsp:include>
 
     <h3>게시물 등록</h3>
-    <div>내용 <input type = "textarea"></div>
-    <div>작성자 <input type = text></div>
-    <button onclick="boardwrite()">등록하기</button>
+    <div>내용 <textarea id="bcontent"></textarea></div>
+    <div>작성자 <input type = text id="bwriter"></div>
+    <button onclick="boardWrite()">등록하기</button>
+
+    <script src="./boardWrite.js"></script>
     
 </body>
 </html>

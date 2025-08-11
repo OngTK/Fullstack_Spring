@@ -11,6 +11,8 @@
 
     <h3>게시물 전체 조회</h3>
     <div>
+        <button><a href="/example/boardService12/boardWrite.jsp">글쓰기</a></button>
+        
         <table border="1">
             <thead>
                 <tr>
@@ -25,6 +27,8 @@
         </table>  
     </div>
     <button onclick="boardPrint()">조회하기</button>
+
+    <script src="./boardPrint.js"></script>
     
 </body>
 </html>

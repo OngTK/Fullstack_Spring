@@ -29,11 +29,7 @@
             헤더 영역</div>
         <ul>
             <li><a href="/example/boardService12/home.jsp">Home</a></li>
-            <li><a href="/example/boardService12/boardWrite.jsp">게시물 쓰기</a></li>
-            <li><a href="/example/boardService12/boardPrint.jsp">게시물 전체조회</a></li>
-            <li><a href="/example/boardService12/boardFind.jsp">게시물 개별조회</a></li>
-            <li><a href="/example/boardService12/boardDelete.jsp">게시물 삭제</a></li>
-            <li><a href="/example/boardService12/boardUpdate.jsp">게시물 수정</a></li>
+            <li><a href="/example/boardService12/boardPrint.jsp">게시판</a></li>
         </ul>
     </div>
 

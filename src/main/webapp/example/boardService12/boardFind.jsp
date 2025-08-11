@@ -10,12 +10,13 @@
     <jsp:include page = "/example/boardService12/header.jsp"></jsp:include>
 
     <h3>특정 게시물 조회</h3>
-    <div>번호 <input type="number" disabled></div>
-    <div>작성자 <input type="text" disabled></div>
-    <div>내용 <input type="textarea" disabled></div>
-    
+    <div>번호 <input type="number" id = "bno"></div>
     <button onclick="boardFind()">조회하기</button>
 
+    <div>작성자 <input type="text" disabled id="bwriter"></div>
+    <div>내용 <textarea disabled id="bcontent"></textarea></div>
+
+    <script src="./boardFind.js"></script>
     
 </body>
 </html>

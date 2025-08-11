@@ -10,7 +10,6 @@
     <jsp:include page = "/example/boardService12/header.jsp"></jsp:include>
 
     <h3>BoardService home 화면입니다.</h3>
-    
-    
+        
 </body>
 </html>
