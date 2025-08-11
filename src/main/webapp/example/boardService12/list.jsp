@@ -26,8 +26,6 @@
             </tbody>
         </table>  
     </div>
-    <button onclick="boardPrint()">조회하기</button>
-
     <script src="./list.js"></script>
     
 </body>
