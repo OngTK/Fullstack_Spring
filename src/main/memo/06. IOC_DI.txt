@@ -1,3 +1,5 @@
+☆★ 250811
+
 [ IOC · Inversion Of Control ]
     : 제어의 역전 · 제어 반전
     1) 정의
