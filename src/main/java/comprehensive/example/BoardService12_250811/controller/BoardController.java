@@ -35,7 +35,14 @@ public class BoardController {
     } // func end
 
     // [3] boardFind()
+    @GetMapping("/find")
+    public BoardDto boardFind(int bno){
+        System.out.println("BoardController.boardFind");
+        System.out.println("bno = " + bno);
 
+        BoardDto boardDto = boardService.boardFind(bno);
+        return boardDto;
+    };
 
     // [4] boardDelete()
     @DeleteMapping
@@ -48,9 +55,12 @@ public class BoardController {
     } //func end
 
     // [5] boardUpdate()
-    public boolean boardUpdate(BoardDto boardDto) {
+    @PutMapping
+    public boolean boardUpdate(@RequestBody  BoardDto boardDto) {
         System.out.println("boardDto = " + boardDto);
         System.out.println("BoardController.boardUpdate");
 
+        boolean result = boardService.boardUpdate(boardDto);
+        return result;
     } // func end
 } // class end

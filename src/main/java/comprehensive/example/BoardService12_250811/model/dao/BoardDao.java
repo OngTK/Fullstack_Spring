@@ -61,6 +61,26 @@ public class BoardDao extends Dao {
     }
 
     // [3] boardFind()
+    public BoardDto boardFind(int bno) {
+        System.out.println("BoardDao.boardFind");
+        System.out.println("bno = " + bno);
+        BoardDto boardDto = new BoardDto();
+        try {
+            String sql = "select * from board where bno=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,bno);
+            ResultSet rs = ps.executeQuery();
+
+            rs.next();
+
+            boardDto.setBno(bno);
+            boardDto.setBcontent(rs.getString("bcontent"));
+            boardDto.setBwriter(rs.getString("bwriter"));
+        } catch (Exception e) {
+            System.out.println("BoardDao.boardFind" + e);
+        }
+        return boardDto;
+    } // func end
 
     // [4] boardDelete()
     public boolean boardDelete(int bno) {
@@ -72,7 +92,7 @@ public class BoardDao extends Dao {
             String sql = "delete from board where bno = ?";
 
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1,bno);
+            ps.setInt(1, bno);
 
             int count = ps.executeUpdate();
 
@@ -86,11 +106,26 @@ public class BoardDao extends Dao {
     }
 
     // [5] boardUpdate()
-    public boolean boardUpdate(BoardDto boardDto){
+    public boolean boardUpdate(BoardDto boardDto) {
         System.out.println("BoardDao.boardUpdate");
         System.out.println("boardDto = " + boardDto);
 
-    }
+        boolean result = false;
+
+        try {
+            String sql = "update board set bcontent = ? where bno = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, boardDto.getBcontent());
+            ps.setInt(2, boardDto.getBno());
+            int count = ps.executeUpdate();
+            if (count == 1) {
+                result = true;
+            }
+        } catch (Exception e) {
+            System.out.println("BoardDao.boardUpdate" + e);
+        }
+        return result;
+    }//func end
 
 
 }

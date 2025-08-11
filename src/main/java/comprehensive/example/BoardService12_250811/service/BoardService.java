@@ -31,6 +31,13 @@ public class BoardService {
     }
 
     // [3] boardFind()
+    public BoardDto boardFind(int bno){
+        System.out.println("BoardService.boardFind");
+        System.out.println("bno = " + bno);
+
+        BoardDto boardDto = boardDao.boardFind(bno);
+        return boardDto;
+    } // func end
 
 
     // [4] boardDelete()
@@ -47,5 +54,7 @@ public class BoardService {
         System.out.println("BoardService.boardUpdate");
         System.out.println("boardDto = " + boardDto);
 
+        boolean result = boardDao.boardUpdate(boardDto);
+        return result;
     } // func end
 } // class end
