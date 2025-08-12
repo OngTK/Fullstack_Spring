@@ -25,7 +25,20 @@
     2) 목적
         - 객체들간의 결합도를 낮추고, 유지보수 편의성을 향상
     3) 주요 Annotation
-        @Autowired : 스프링 컨테이너에 저장된 bean을 호출
+        @Autowired : 스프링 컨테이너에 저장된 bean을 호출 ☆★☆★☆★☆★
+                   : 멤버변수, 생성자, setter 위에 주석
+            ```
+            멤버변수
+                @Autowired
+                private class명 변수명;
+            생성자
+                final class명 변수명;
+                @Autowired
+                final class명(class명 매개변수명){ this.변수명 = 매개변수명 }
+            setter
+                @Autowired
+                public void set변수명(클래스명 매개변수명){this.변수명 = 매개변수명}
+            ```
 
      ※ 싱글톤 호출을 대신함
      ※ DTO · VO · ENTITY는 DI를 하지 않는다.
