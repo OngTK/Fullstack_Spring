@@ -5,7 +5,7 @@
 <head>
     <meta charset='utf-8'>
     <title>쇼핑몰 회원관리</title>
-    <link rel='stylesheet' href='CSS/list.CSS'>
+        <link rel='stylesheet' href='CSS/index.css'>
 </head>
 <body>
     <jsp:include page = "/qaTest/header.jsp"></jsp:include>

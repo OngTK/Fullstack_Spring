@@ -1,0 +1,34 @@
+#indexWrap {
+    width: 1280px;
+    max-width: 0px auto;
+    min-height: 1000px;
+    margin: 0px auto;
+}
+
+h3 {
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+}
+
+#indexWrap>div {
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    margin: 10px auto;
+}
+
+#buttonCover {
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+}
+#buttonCover > button {
+    margin : 10px
+}
+
+#memberTbody > tr a {
+    color: black;
+}

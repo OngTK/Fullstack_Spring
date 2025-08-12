@@ -6,7 +6,7 @@
     <head>
         <meta charset='utf-8'>
         <title>쇼핑몰 회원관리</title>
-
+        <link rel='stylesheet' href='CSS/index.css'>
     </head>
 
     <body>
@@ -45,9 +45,10 @@
                 </tr>
 
             </table>
+            <div id="buttonCover">
             <button onclick="memberCreate()">등록</button>
             <button onclick="gotoList()">조회</button>
-        </div>
+        </div></div>
 
         <jsp:include page="/qaTest/footer.jsp"></jsp:include>
     
