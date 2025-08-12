@@ -1,0 +1,38 @@
+*{
+    margin: 0px 0px;
+}
+
+#titleWrap {
+    background-color: #1F4E79 ;
+    padding: 20px 0px;
+}
+
+#headerTitle {
+    width: 1280px;
+    color: white;
+    margin : 0px auto;
+    display: flex;
+    justify-content: center;
+}
+
+#menuWrap {
+    background-color: #9DC3E6;
+    padding : 10px;
+}
+
+#topMenu{    
+    width: 1280px;
+    margin : 0px auto;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    padding : 20px
+}
+
+#topMenu {
+    display: flex;
+    list-style-type: none;
+}
+

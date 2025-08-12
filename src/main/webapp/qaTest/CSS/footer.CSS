@@ -1,0 +1,12 @@
+#Wrap {
+    background-color: #1F4E79 ;
+    padding: 20px 0px;
+}
+
+#footerTitle {
+    width: 1280px;
+    color: white;
+    margin : 0px auto;
+    display: flex;
+    justify-content: center;
+}
