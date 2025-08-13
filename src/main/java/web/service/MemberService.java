@@ -1,0 +1,22 @@
+package web.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import web.model.dao.MemberDao;
+import web.model.dto.MemberDto;
+
+@Service
+public class MemberService {
+
+    @Autowired
+    private MemberDao memberDao;
+
+    // [1] 회원가입
+    public int signup(MemberDto memberDto) {
+        // [1.1] dao에 전달
+        int result = memberDao.signup(memberDto);
+        // [1.2] 결과 반환
+        return result;
+    } // func end
+
+} // class end
