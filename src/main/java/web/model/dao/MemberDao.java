@@ -42,5 +42,26 @@ public class MemberDao extends Dao {
         return 0;
     } // func end
 
+    // [2] 로그인
+    public int login(MemberDto memberDto) {
+        try {
+            // [2.1] SQL 작성
+            String sql = "select * from member where mid = ? and mpwd = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,memberDto.getMid());
+            ps.setString(2,memberDto.getMpwd());
+            ResultSet rs = ps.executeQuery();
+            // [2.2] SQL 결과
+            if (rs.next()) {
+                int mno = rs.getInt("mno");
+                // [2.3] 결과반환 - 성공 시 mno 반환
+                return mno;
+            }
+        } catch (Exception e) {
+            System.out.println("MemberDao.login" + e);
+        }
+        // [2.3] 결과 반환 - 실패 시 0 반환
+        return 0;
+    } // func end
 
 } // class end

@@ -19,4 +19,12 @@ public class MemberService {
         return result;
     } // func end
 
+    // [2] 로그인
+    public int login(MemberDto memberDto){
+        // [2.1] dao 메소드 실행
+        int result = memberDao.login(memberDto);
+        // [2.2] 결과 반환
+        return result;
+    } // func end
+
 } // class end

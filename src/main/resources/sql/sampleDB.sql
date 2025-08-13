@@ -4,7 +4,7 @@ CREATE DATABASE springweb;
 USE springweb;
 
 CREATE TABLE member (
-    mno     INT AUTO_INCREMENT,                    -- 회원 번호 (기본키)
+    mno     INT AUTO_INCREMENT not null,                    -- 회원 번호 (기본키)
     mid     VARCHAR(50) NOT NULL UNIQUE,           -- 회원 아이디
     mpwd    VARCHAR(50) NOT NULL,                  -- 비밀번호
     mname   VARCHAR(30) NOT NULL,                  -- 회원 이름
@@ -21,3 +21,5 @@ INSERT INTO member (mid, mpwd, mname, mphone, mdate) VALUES
 ('leepeace', 'abcd1111', '이평화', '010-2222-3333', '2025-08-03 17:45:00'),
 ('parkjoy',  'pass9999', '박기쁨', '010-5555-6666', '2025-08-04 08:05:00'),
 ('choifit',  'fit2025',  '최건강', '010-7777-8888', '2025-08-05 19:30:00');
+
+select * from member;
