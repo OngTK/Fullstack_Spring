@@ -1,0 +1,45 @@
+[ 통신 ]
+    1) 정의
+        - 매체를 이용하여 정보를 주고 받는 행위
+    2) ex
+        - 전화, 우편, 전신, 무전, 웹 통신 etc
+    3) 반응
+        - request 요청 / response 응답
+
+[ 인터넷 ]
+    1) 정의
+        - 통신 기기로 연결하고, 통신 프로토콜을 이용하여 정보를 주고 받는 과정
+    2) 사용처
+        - 무선(Wi-Fi), 유선(LAN) etc
+
+[ 네트워크 ]
+    1) 정의
+        - 인터넷을 통해 연결된 구조에서 정보를 주고받는 과정
+    2) 특징
+        - 글로벌 연결성
+        - 분산 구조
+        - 다양한 서비스 제공
+        - **프로토콜**
+
+[ 프로토콜 ]
+    1) 정의
+        - 네트워크에서 데이터를 통신하기 위한 규칙·절차
+        ex) 신호등, 도로명체계, 전화번호 체계 etc
+    2) 주요 프로토콜
+        - IP    : Internet Protocol, 네트워크를 사용하는 컴퓨터 식별 번호
+                : 0 ~ 255 (2^8) 사이 숫자 4개를 가짐
+        - Port  : 네트워크를 사용하는 컴퓨터 안에서의 프로그램(프로세스) 식별 번호
+                : 0 ~ 65535 (2^16)
+                : 주요 port : MySQL-3306, Tomcat-8080, FTP-20·21, DNS-53
+                : cmd [ netstat -ano ]
+                : port 강제종료 = 프로그램 강조 종료 : cmd > [ taskkill /f /pid 000 ]
+        - DNS   : Domain Name Service, IP를 사람이 이해할 수 있는 문자로 변환하는 서비스
+                : 도메인 IP 확인 : cmd > [ nslookup www.(도메인) ]
+        - HTTP  : HyperText Transfer Protocol, 텍스트 문서 이동 규약
+                : HTML·XML 문서들을 통신하는 규약
+        - HTTPS : HTTP에 보안SSL·암호화 체계를 부여한 규역
+        - SMTP  : Simple Mail Transfer Protocol, 간이 메일 이동 규약
+                : 메일 전송 서비스
+        - FTP   : File Transfer Protocol, 파일 이동 규약
+        - SSL   : Secure Sockets Layer
+                : 웹사이트와 브라우저 간의 보안 통신 기술, 암호화 기술
