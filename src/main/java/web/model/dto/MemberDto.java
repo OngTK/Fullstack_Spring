@@ -13,5 +13,5 @@ public class MemberDto {
     private String mpwd;
     private String mname;
     private String mphone;
-    private String mdata;
+    private String mdate;
 }

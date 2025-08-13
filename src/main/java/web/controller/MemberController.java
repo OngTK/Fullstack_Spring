@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import web.model.dto.MemberDto;
 import web.service.MemberService;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/member")
 public class MemberController {
@@ -16,7 +18,7 @@ public class MemberController {
 
     // [1] 회원가입
     @PostMapping("/signup")
-    public int signup(@RequestBody MemberDto memberDto){
+    public int signup(@RequestBody MemberDto memberDto) {
         System.out.println("MemberController.signup");
         System.out.println("memberDto = " + memberDto);
         // [1.1] Service에 메소드 실행
@@ -29,7 +31,7 @@ public class MemberController {
     // [2] 로그인
     // [2.1] HttpServletRequest 매개변수 기재
     @PostMapping("/login")
-    public int login(@RequestBody MemberDto memberDto, HttpServletRequest request){
+    public int login(@RequestBody MemberDto memberDto, HttpServletRequest request) {
         System.out.println("memberDto = " + memberDto + ", request = " + request);
         System.out.println("MemberController.login");
 
@@ -40,9 +42,9 @@ public class MemberController {
         int result = memberService.login(memberDto);
 
         // [2.4] 로그인 성공 => result = mno 가 1 이상인 경우
-        if( result >= 1 ){
+        if (result >= 1) {
             // [2.4.1] Session 정보에 속성 추가
-            session.setAttribute("loginMno",result);
+            session.setAttribute("loginMno", result);
         }
         // [2.5] 결과 반환
         return result;
@@ -51,17 +53,124 @@ public class MemberController {
     // [3] 로그아웃
     // [3.1] HttpServletRequest 매개변수 선언
     @GetMapping("/logout")
-    public boolean logout(HttpServletRequest request){
+    public boolean logout(HttpServletRequest request) {
+        System.out.println("MemberController.logout");
+        System.out.println("request = " + request);
+
         // [3.2] Servlet에서 session 객체 가져오기
         HttpSession session = request.getSession();
 
         // [3.3] 유효성 검사
-        if (session == null || session.getAttribute("loginMno") == null){
+        if (session == null || session.getAttribute("loginMno") == null) {
             return false; // 비로그인 상태 - 로그아웃 실패
         }
         // [3.4] session 객체 내의 mno 속성 값 초기화
         session.removeAttribute("loginMno");
         return true; // 로그인 성공
+    } // func end
+
+    // [4] 내 정보 조회
+    // [4.1] HttpServletRequest 매개변수 선언
+    @GetMapping("/info")
+    public MemberDto info(HttpServletRequest request) {
+        System.out.println("MemberController.info");
+        System.out.println("request = " + request);
+
+        // [4.2] servlet에서 session 객체 가져오기
+        HttpSession session = request.getSession();
+
+        // [4.3] 유효성 검사 - 비로그인상태 null
+        if (session == null || session.getAttribute("loginMno") == null) {
+            return null;
+        }
+
+        // [4.4] session 객체 내의 mno 속성 값 가져오기
+        Object obj = session.getAttribute("loginMno");
+        // [4.4.1] 타입변환
+        int mno = (int) obj;
+
+        // [4.5] service 메소드 실행
+        MemberDto memberDto = memberService.info(mno);
+
+        // [4.6] 결과 반환
+        return memberDto;
+    } // func end
+
+    // [5] 중복검사
+    @GetMapping("/check")
+    public boolean check(@RequestParam String type, @RequestParam String data) {
+        // [5.1] service 메소드 실행
+        boolean result = memberService.check(type, data);
+        // [5.2] 결과 반환
+        return result;
+    } // func end
+
+    // [6] 회원 정보 수정
+    @PutMapping("/update")
+    public boolean update(@RequestBody MemberDto memberDto, HttpServletRequest request) {
+        System.out.println("MemberController.update");
+        System.out.println("memberDto = " + memberDto + ", request = " + request);
+
+        // [6.1] Servlet 내의 session 가져오기
+        HttpSession session = request.getSession();
+        // [6.2] 유효성 검사
+        if (session == null || session.getAttribute("loginMno") == null) {
+            return false; //비로그인 상태
+        }
+        // [6.3] session의 mno 가져오기
+        Object obj = session.getAttribute("loginMno");
+        int mno = (int) obj;
+
+        // [6.4] memberDto에 mno 삽입
+        memberDto.setMno(mno);
+
+        // [6.5] service 메소드 실행
+        boolean result = memberService.update(memberDto);
+
+        // [6.6] 결과 반환
+        return result;
+
+    } //func end
+
+    // [7] 비밀번호 수정
+    @PutMapping("/update/password")
+    public boolean updatePassword(@RequestBody Map<String, String> map, HttpServletRequest request) {
+        System.out.println("MemberController.updatePassword");
+        System.out.println("map = " + map + ", request = " + request);
+        // [7.1] servlet 에서 session 추출
+        HttpSession session = request.getSession();
+        // [7.2] 유효성 검사
+        if (session == null || session.getAttribute("loginMno")==null){
+            return false; // 비로그인 상태
+        }
+        // [7.3] session에서 mno 추출
+        Object obj = session.getAttribute("loginMno");
+        int mno = (int) obj;
+        // [7.4] service의 메소드 실행
+        boolean result = memberService.updatePassword(mno, map);
+        // [7.5] 결과 반환
+        return result;
+    } // func end
+
+    // [8] 회원 탈퇴
+    @DeleteMapping("/delete")
+    public boolean delete(String mpwd, HttpServletRequest request){
+        System.out.println("mpwd = " + mpwd + ", request = " + request);
+        System.out.println("MemberController.delete");
+
+        // [8.1] servlet에서 session 추출
+        HttpSession session = request.getSession();
+        // [8.2] 유효성 검사
+        if (session == null || session.getAttribute("loginMno") == null){
+            return false;
+        }
+        // [8.3] session에서 mno 추출
+        Object obj = session.getAttribute("loginMno");
+        int mno = (int) obj;
+        // [8.4] service의 메소드 실행
+        boolean result = memberService.delete(mno, mpwd);
+        // [8.5] 결과 반환
+        return result;
     } // func end
 
 } // class end

@@ -22,4 +22,8 @@ INSERT INTO member (mid, mpwd, mname, mphone, mdate) VALUES
 ('parkjoy',  'pass9999', '박기쁨', '010-5555-6666', '2025-08-04 08:05:00'),
 ('choifit',  'fit2025',  '최건강', '010-7777-8888', '2025-08-05 19:30:00');
 
+INSERT INTO member (mid, mpwd, mname, mphone, mdate) VALUES
+("testID","test1234","테스트","010-0000-0000","2025-08-13 19:30:00" );
+
+
 select * from member;
