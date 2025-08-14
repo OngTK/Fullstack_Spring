@@ -1,13 +1,7 @@
 #container {
-    width: 40rem;
+    width: 30rem;
     border: 0.3rem #eeeeee solid;
     border-radius: 1rem;
     margin: 1rem auto;
     padding: 1rem;
-}
-
-.infoArea {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin: 0.1rem;
 }

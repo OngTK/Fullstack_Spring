@@ -14,7 +14,7 @@
         <jsp:include page="/header.jsp"></jsp:include>
 
         <div id="container">
-            <h3>마이페이지 조회</h3>
+            <h3>마이페이지</h3>
 
             <div>회원번호 :  <span id = "mno" class = "infoArea" ></span> </div>
             <div>아이디 :<span id = "mid" class = "infoArea" ></span> </div>
@@ -23,7 +23,7 @@
             <div>가입일자 :<span id = "mdate" class = "infoArea" ></span> </div>
   
             <a href="/member/update.jsp">회원정보 수정</a><br/>
-            <a href="/member/pwdUpdate.jsp">비밀번호 수정</a><br/>
+            <a href="/member/pwdupdate.jsp">비밀번호 수정</a><br/>
             <a href="#" onclick="onDelete()">회원 탈퇴</a><br/>
             
         </div>
