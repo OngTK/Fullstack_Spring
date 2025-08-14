@@ -8,6 +8,7 @@ import web.model.dto.MemberDto;
 import web.service.MemberService;
 
 import java.util.Map;
+import java.util.Random;
 
 @RestController
 @RequestMapping("/member")
@@ -176,5 +177,35 @@ public class MemberController {
         // [8.6] 결과 반환
         return result;
     } // func end
+
+    // [9] 아이디 찾기
+    // 입력: 이름, 연락처
+    // 처리: 이름+연락처 일치 시 아이디 반환
+    // 불일치 시 "회원정보 없음" 메시지
+    @GetMapping("/findID")
+    public String findMid(@RequestParam String mname, @RequestParam String mphone) {
+        System.out.println("MemberController.findMid");
+        System.out.println("mname = " + mname + ", mphone = " + mphone);
+        String mid = memberService.findMid(mname, mphone);
+        return mid;
+    }
+
+    // [10] 비밀번호 찾기
+    // 입력: 아이디, 연락처
+    // 처리: 아이디+연락처 일치 시 새로운 난수 비밀번호 생성 후 반환
+    // 생성된 비밀번호를 DB에 업데이트(임시 비밀번호로 사용)
+    @GetMapping("/findPwd")
+    public int findMpwd(@RequestParam String mid, @RequestParam String mphone) {
+        System.out.println("MemberController.findMpwd");
+        System.out.println("mid = " + mid + ", mphone = " + mphone);
+
+        // [10.1] 난수 발생, 6자리 난수 발생
+        Random random = new Random();
+        int randPwd = random.nextInt(1000000);
+
+        // [10.1] service의 메소드 실행
+        int result = memberService.findMpwd(mid, mphone, randPwd);
+        return result;
+    }//func end
 
 } // class end

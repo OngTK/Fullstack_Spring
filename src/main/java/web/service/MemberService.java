@@ -71,4 +71,16 @@ public class MemberService {
         return result;
     } // func end
 
+    // [9] 아이디 찾기
+    public String findMid(String mname, String mphone){
+        String mid = memberDao.findMid(mname, mphone);
+        return mid;
+    } // func end
+
+    // [10] 비밀번호 찾기·초기화
+    public int findMpwd(String mid, String mphone, int randPwd) {
+        int mpwd = memberDao.findMpwd(mid,mphone,randPwd);
+        return mpwd;
+    }
+
 } // class end

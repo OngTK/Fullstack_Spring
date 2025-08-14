@@ -25,5 +25,6 @@ INSERT INTO member (mid, mpwd, mname, mphone, mdate) VALUES
 INSERT INTO member (mid, mpwd, mname, mphone, mdate) VALUES
 ("testID","test1234","테스트","010-0000-0000","2025-08-13 19:30:00" );
 
-
 select * from member;
+
+update member set mpwd = 123456 where (mid="qwe123" and mphone = "010-1234-1234"); 

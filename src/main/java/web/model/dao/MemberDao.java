@@ -164,7 +164,7 @@ public class MemberDao extends Dao {
             String sql = "delete from member where mno=? and mpwd = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, mno);
-            ps.setString(2,mpwd);
+            ps.setString(2, mpwd);
             int count = ps.executeUpdate();
             // [8.2] 결과
             if (count == 1) {
@@ -175,5 +175,45 @@ public class MemberDao extends Dao {
         }
         return false;
     } // func end
+
+    // [9] ID 찾기
+    public String findMid(String mname, String mphone) {
+        String mid = null;
+        try {
+            // [9.1] SQL 작성
+            String sql = "select * from member where mname = ? and mphone =?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, mname);
+            ps.setString(2, mphone);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                mid = rs.getString("mid");
+            }
+            return mid;
+        } catch (Exception e) {
+            System.out.println("MemberDao.findMid" + e);
+        }
+        return null;
+    } // func end
+
+    // [10] PW 찾기·초기화
+    public int findMpwd(String mid, String mphone, int randPwd) {
+        try {
+            String sql = "update member set mpwd = ? where (mid=? and mphone = ?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,randPwd);
+            ps.setString(2,mid);
+            ps.setString(3,mphone);
+
+            int count = ps.executeUpdate();
+            if( count == 1 ){
+                return randPwd;
+            }
+        } catch (Exception e) {
+            System.out.println("MemberDao.findMpwd" + e);
+        }
+        return 0;
+    }
 
 } // class end
