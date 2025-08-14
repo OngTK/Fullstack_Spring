@@ -5,7 +5,7 @@
 
     <head>
         <meta charset='utf-8'>
-        <title>Page Title</title>
+        <title>header 영역</title>
 
         <link rel='stylesheet' href='/css/header.css'>
     </head>
@@ -13,7 +13,7 @@
     <body>
         <div id="header">
             <ul id="sub-menu">
-                <li><a href="/index.jps"><img src="/img/tj_logo.jpg"></a></li>
+                <li><a href="/index.jsp"><img src="/img/tj_logo.jpg"></a></li>
                 <li><a href="#">메뉴1</a></li>
                 <li><a href="#">메뉴2</a></li>
                 <li><a href="#">메뉴3</a></li>

@@ -1,5 +1,6 @@
 * {
     margin: 0px 0px;
+    padding : 0px 0px;
     text-decoration: none;
 }
 
@@ -10,24 +11,18 @@ a {
 #header {
     display: flex;
     justify-content: space-between;
+    border-bottom: 0.25rem black solid;
 }
 
-#headr>#sub-menu{
+#header>#sub-menu,
+#header>#log-menu{
     display: flex;
     list-style-type: none;
     justify-content: space-between;
+    align-items: center;
 }
 
-#headr>#log-menu {
-    display: flex;
-    list-style-type: none;
-    justify-content: space-between;
-}
-
-#headr>#sub-menu>li{
-    margin-left: 10px;
-}
-
-#headr>#log-menu>li {
-    margin-left: 10px;
+#header>#sub-menu>li,
+#header>#log-menu>li{
+    margin-left: 15px;
 }

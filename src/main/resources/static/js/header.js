@@ -6,7 +6,7 @@ const myinfo = async () => {
     // [1.1] jsp 영역 불러오기
     const logMenu = document.querySelector("#log-menu")
     let html = ""   
-    
+
     try {
         // [1.2] Fetch
         // [1.2.1] data / 생략
@@ -17,8 +17,6 @@ const myinfo = async () => {
         const d = await response.json()
         console.log(d)
 
-        
-
         // [1.3.1] 로그인 시, 정상 통신 fetch 
         html += `<li><span>${d.mname}님 100 POINT </span></li>
                 <li><a href="/member/info.jsp">내 정보</a></li>
@@ -26,7 +24,12 @@ const myinfo = async () => {
     } catch {
         // [1.3.2] 비로그인 시, 비정상 통신 fetch 
         html += `<li><a href="/member/login.jsp">로그인</a></li>
-                <li><a href="/member/singup.jsp">회원가입</a></li>`
+                <li><a href="/member/signup.jsp">회원가입</a></li>`
+
+        // 참고 
+        // 비로그인 시 Java에서 반환은 null
+        // null 은 .json() 실행시 오류를 반환함!
+        // 따라서  비로그인 상황에 대한 결과는 catch 문에 작성
     }
 
     // [1.4] innerHTML 삽입
