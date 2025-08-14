@@ -8,14 +8,10 @@ const signup = async () => {
     console.log("signup exe func")
 
     // [1.0] signPass 유효성 검사 확인하기
-    if(signPass[0] == false){
-        alert("[경고] 아이디 중복으로 회원가입이 불가합니다.")
+    if(signPass.includes(false)){
+        alert("[경고] 유효성 검사에 오류가 있습니다. 올바른 정보를 입력해주세요.")
         return;
     } 
-    else if( signPass[1] == false){
-        alert("[경고] 전화번호 중복으로 회원가입이 불가합니다.")
-        return;
-    }
 
     // [1.1] 입력정보 가져오기
     const idInput = document.querySelector("#idInput")
@@ -101,6 +97,13 @@ const phoneCheck = async () => {
 
     let html = ""
 
+    // [2.2] 길이 검사
+    if( mphone.length != 13 ){
+        html += `<span style="color:red">하이픈(-)을 포함한 13자리로 입력해주세요.</span>`
+        phoneCheck.innerHTML = html;
+        return;
+    }
+
     // [2.2] Fetch
     try {
         const option = { method: "GET" }
@@ -109,14 +112,15 @@ const phoneCheck = async () => {
 
         // [2.3] 결과
         if (data) {
-            html += `<span style="color:red">이미 존재하는 전화번호입니다.</span>`
+            html += `<span style="color:red">이미 등록된 전화번호입니다.</span>`
             signPass[1] = false;
         } else {
             html += `<span style="color:blue">사용 가능한 전화번호입니다.</span>`
             signPass[1] = true;
         }
-    } catch {
+    } catch(error) {
         alert("[경고] 관리자에게 문의하세요")
+        console.log(error)
     }
     phoneCheck.innerHTML = html;
 }

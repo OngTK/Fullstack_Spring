@@ -1,0 +1,7 @@
+#container {
+    width: 40rem;
+    border: 0.3rem #eeeeee solid;
+    border-radius: 1rem;
+    margin: 1rem auto;
+    padding: 1rem;
+}
