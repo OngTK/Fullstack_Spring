@@ -1,0 +1,33 @@
+* {
+    margin: 0px 0px;
+    text-decoration: none;
+}
+
+a {
+    color: black;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#headr>#sub-menu{
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+}
+
+#headr>#log-menu {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+}
+
+#headr>#sub-menu>li{
+    margin-left: 10px;
+}
+
+#headr>#log-menu>li {
+    margin-left: 10px;
+}

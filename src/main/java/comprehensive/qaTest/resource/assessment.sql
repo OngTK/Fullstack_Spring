@@ -52,4 +52,6 @@ delete from money where salenol=20160004;
 select * from member;
 select * from money;
 
-select * from money inner join member on member.custNo = money.custno;
+select money.custno, member.custName, member.grade, sum(money.price) as totalPrice from money inner join member on member.custNo = money.custno group by member.custNo order by totalPrice desc;
+
+select max(custno) from member;

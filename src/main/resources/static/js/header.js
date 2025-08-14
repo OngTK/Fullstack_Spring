@@ -1,0 +1,60 @@
+console.log("header js exe")
+
+// [1] 내 정보 요청해서 메뉴 나누기
+const myinfo = async () => {
+    console.log("myinfo func exe")
+    // [1.1] jsp 영역 불러오기
+    const logMenu = document.querySelector("#log-menu")
+    let html = ""   
+    
+    try {
+        // [1.2] Fetch
+        // [1.2.1] data / 생략
+        // [1.2.2] option
+        const option = { method: "GET" }
+        // [1.2.3] fetch
+        const response = await fetch("/member/info", option)
+        const d = await response.json()
+        console.log(d)
+
+        
+
+        // [1.3.1] 로그인 시, 정상 통신 fetch 
+        html += `<li><span>${d.mname}님 100 POINT </span></li>
+                <li><a href="/member/info.jsp">내 정보</a></li>
+                <li><a href="#" onclick="logout()">로그아웃</a></li>`
+    } catch {
+        // [1.3.2] 비로그인 시, 비정상 통신 fetch 
+        html += `<li><a href="/member/login.jsp">로그인</a></li>
+                <li><a href="/member/singup.jsp">회원가입</a></li>`
+    }
+
+    // [1.4] innerHTML 삽입
+    logMenu.innerHTML = html;
+} // func end
+myinfo()
+
+// [2] 로그아웃
+const logout = async () => {
+    console.log("logout func exe")
+
+    try {
+        // [2.1] fetch
+        const option = { method: "GET" }
+        const response = await fetch("/member/logout", option);
+        const data = await response.json();
+
+        // [2.2] 결과 
+        if (data == true){
+            alert("로그아웃 했습니다.")
+            location.href = "/index.jsp"
+        } else {
+            alert("비정상 요청입니다. 관리자에게 문의하세요.")
+        }
+
+    } catch {
+
+    }
+
+
+}

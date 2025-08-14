@@ -140,7 +140,7 @@ public class MemberController {
         // [7.1] servlet 에서 session 추출
         HttpSession session = request.getSession();
         // [7.2] 유효성 검사
-        if (session == null || session.getAttribute("loginMno")==null){
+        if (session == null || session.getAttribute("loginMno") == null) {
             return false; // 비로그인 상태
         }
         // [7.3] session에서 mno 추출
@@ -148,20 +148,22 @@ public class MemberController {
         int mno = (int) obj;
         // [7.4] service의 메소드 실행
         boolean result = memberService.updatePassword(mno, map);
-        // [7.5] 결과 반환
+        // [7.5] 성공시 session 객체 내의 mno 속성 값 초기화
+        if (result == true) session.removeAttribute("loginMno");
+        // [7.6] 결과 반환
         return result;
     } // func end
 
     // [8] 회원 탈퇴
     @DeleteMapping("/delete")
-    public boolean delete(String mpwd, HttpServletRequest request){
+    public boolean delete(String mpwd, HttpServletRequest request) {
         System.out.println("mpwd = " + mpwd + ", request = " + request);
         System.out.println("MemberController.delete");
 
         // [8.1] servlet에서 session 추출
         HttpSession session = request.getSession();
         // [8.2] 유효성 검사
-        if (session == null || session.getAttribute("loginMno") == null){
+        if (session == null || session.getAttribute("loginMno") == null) {
             return false;
         }
         // [8.3] session에서 mno 추출
@@ -169,7 +171,9 @@ public class MemberController {
         int mno = (int) obj;
         // [8.4] service의 메소드 실행
         boolean result = memberService.delete(mno, mpwd);
-        // [8.5] 결과 반환
+        // [8.5] 성공시 session 객체 내의 mno 속성 값 초기화
+        if (result == true) session.removeAttribute("loginMno");
+        // [8.6] 결과 반환
         return result;
     } // func end
 

@@ -2,6 +2,7 @@
     1) 정의
         - 자바 기반의 웹 프로그램.Application
         - JSP, 서블릿 기반
+        - Spring Boot에 내장된 웹서버
 
 [ Servlet ]
     1) 정의
@@ -12,6 +13,16 @@
         - Spring @Controller
     4) 환경
         - Tomcat 서버 내 servlet 컨테이너 형태로 존재
+    5) 관련 키워드·메소드
+        (1) HttpServletRequest class(type)
+            : Tomcat 서버의 Servelet 컨테이너의 정보를 갖는 클래스
+            : controller 매개변수 내에서 (HttpServletRequest request) 와 같이
+                request 로 받아와서 메소드 내의 인수로 사용
+            - .getRemoteAddr();          : 요청 클라이언트의 IP 정보를 반환
+            - .getRemotePort();          : 요청 클라이언트의 PORT 정보를 반환
+            - .getHeader("User-Agent");  : 요청 클라이언트의 브라우저 정보(HTTP Header·통신 부가정보)를 반환, talend API 에서는 null 로 표시될 수 있음
+            - .getSession();             : Servlet 내의 session 정보를 반환
+        (2) HttpServletResponse class(type)
 
 [ Tomcat Session ]
     1) 정의
@@ -27,3 +38,23 @@
         - 실무에서는 세션에 과부하에 따른 고민 필요~~
     4) 특징
         - 브라우저마다 별도의 세션 객체가 할당
+    5) 관련 키워드·메소드
+        (1) HttpSession class(type)
+            : Http의 session 정보를 담는 클래스
+            : [ HttpServletRequest request ]가 선언되어 있을 경우
+                HttpSession session = request.getSession(); 와 같이 session 변수에 저장
+            : 매개변수에 (HttpSession session)를 직접 매개변수로 선언하여 가져올 수도 있음
+                - .setAttribute("name",value);  : session에 속성명·name의 값·value를 저장,
+                                                    속성값은 Object 타입으로 자동 타입 변환되어 저장,
+                                                    Map<name,value> 형태로 관리
+                - .getAttribute("name");        : session 내의 속성명·name에 해당하는 value를 반환,
+                                                    이 때, 속성값은 Object 타입으로 필요에 따라 강제 타입 변환 필요
+                - .removeAttribute("name");     : session 내의 특정 속성명을 삭제
+                - .invalidate();                : session 내의 모든 속성 제거
+                - .getId();                     : session 식별 번호로 브라우저·PC마다 다르게 할당,
+                                                    사용자 별 개인 저장소 = 공유되지 않음
+                - .getCreationTime();           : session 생성시간 (단위 milli-sec)
+                - .getLastAccessedTime();       : session의 마지막 접근 시간 (단위 milli-sec)
+                - .setMaxInactiveInterval();    : session의 최대 유효시간 설정 (단위 sec)
+                - .getMaxInactiveInterval();    : session의 최대 유효시간 확인 (단위 sec)
+                - .getAttributeNames();         : session내의 모든 속성명을 반환, 반복문으로 추출

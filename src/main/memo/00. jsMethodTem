@@ -1,0 +1,25 @@
+// 1. GET/DELETE 형식 
+const method = async() =>{
+    try{
+        const option = { method : "GET"}
+        const response = await fetch( "/URL" , option );
+        const data = await response.json();
+    }catch{
+
+    }
+} 
+
+// 2. POST/PUT 형식
+const method = async() =>{
+    try{
+        const option = { 
+            method : "POST",
+            headers : { "Content-Type" : "application/json"},
+            body : JSON.stringify( obj )
+        }
+        const response = await fetch( "/URL" , option );
+        const data = await response.json();
+    }catch{
+
+    }
+}
