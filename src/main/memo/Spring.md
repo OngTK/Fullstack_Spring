@@ -318,3 +318,38 @@ public class RestController1 {
 - 지원 HTTP메소드 : Post / Put 만 사용 가능
 
 # Spring_05_Lombok 어노테이션
+---
+## 1. Lombok 어노테이션
+### 1) 정의
+설계에서 자주 사용하는 코드를 자동 생성해주는 어노테이션 모음
+### 2) 목적
+DTO, VO, ENTITY에서 주로 사용
+DTO     : Data Transfer Object · 데이터 이동 객체
+VO      : Value Object 데이터 값을 가진 객치 (※ 읽기모드, Setter이 존재하지 않음)
+ENTITY  : 데이터의 실제 형태인 개체(실재/본체) (ex. DB의 레코드)
+### 3) 설치
+#### (1) intelliJ
+- Plugin > Market Place > lombok > 설치
+
+#### (2) Gradle 설치
+https://start.spring.io/
+- lombok 검색
+- Gradle - dependencies 내에 아래의 코드를 추가
+```
+dependencies{
+compileOnly 'org.projectlombok:lombok'
+annotationProcessor 'org.projectlombok:lombok'
+}
+```
+
+### 4) 주요 Annotation
+#### (1) in DTO
+① @NoArgsConstructor  : 컴파일 시, 빈 생성자 자동 생성
+② @AllArgsConstructor : 컴파일 시, 전체 생성자 자동 생성
+③ @Getter             : getter 메소드 자동 생성
+④ @Setter             : setter 메소드 자동 생성, @setter 생략 시, Getter 메소드만 존재하므로 VO(읽기모드)
+⑤ @ToString           : toString 메소드 자동 생성
+⑥ @Data               : getter·setter·toString 등을 일괄 처리 
+
+
+# Spring_06_
