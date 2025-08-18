@@ -1,0 +1,18 @@
+#container{
+    display: flex;
+    height: 90vh; /* vh :반응형 높이, 화면에서의 크기/비율 / 헤더를 제외한 90 */
+}
+#map{
+    width: 75%;
+    height: auto;
+}
+
+#sidebar{
+    width: 25%;
+    padding: 0.6rem;
+    overflow-y: auto; /*내용이 넘쳤을 경우, 세로 스크롤 발생*/
+}
+
+#school {
+    margin-bottom: 0.5rem;
+}
