@@ -1,0 +1,13 @@
+#map{
+    width: 80%;
+}
+
+#sidebar{
+    width: 20%;
+    padding: 0.6rem;
+    overflow-y: auto; /*내용이 넘쳤을 경우, 세로 스크롤 발생*/
+}
+
+#store{
+    margin-bottom: 0.5rem;
+}
