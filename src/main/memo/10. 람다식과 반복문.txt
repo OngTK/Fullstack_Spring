@@ -1,0 +1,51 @@
+[ 람다식(화살표) 함수 표현 ]
+1. in Java
+    - 정적 타입 할당
+    (1) 메소드
+        ` int add ( int a, int b ){ return a+b; } `
+    (2) 람다식
+        ` ( int a, int b ) -> { return a+b; } `
+    (3) 반복문
+        ` for( int i = 0 ; i < 0 ; i++ ){ } `
+        ` for( 타입 변수 : 리스트/배열){ } `
+        ` 리스트.forEach( 변수 -> { } ) `
+        ` 리스트.stream().map( 변수 -> { } ).collect( Collectors.to컬렉션명( ) ) `
+        ` 리스트.stream().filter( 변수 -> { } ).collect( Collectors.to컬렉션명( ) ) `
+
+    * 자바 람다식/스트림API 추후 설명
+
+
+2. in JS
+    - 동적 타입 할당
+    (1) 선언적 함수
+        function add( a, b ){ return a + b ; }
+    (2) 람다식
+        ` ( a , b ) => { return a + b ; } `
+
+        ex)
+            const plus = ( a , b ) => { return a + b ; }
+            plus(3,5);
+
+    (3) 반복문
+        - 일반 for문
+            ` for( let i = 0 ; i < 0 ; i++ ){ } `
+        - 향상된 for문
+            ` for( let index in 배열 ){ } `
+            ` for( let value of 배열 ){ } `
+        - forEach 문
+            ` 리스트.forEach( 변수 => { } ) `
+            - 반환값이 없음
+            ex)
+                array.forEach( value => { console.log( value ); } )
+        - map 문
+            ` 리스트.map( 변수 => { } ) `
+            - 반환값이 있음
+            - 배열의 반환값들을 새로운 반환값에 저장할 수 있음
+            ex)
+                let newArray = array.map( value => {return value; } )
+        - filter 문
+            ` 리스트.filter( 변수 => { } ) `
+            - 조건문이 존재하며, 반환값이 있음
+            - 조건에 충종하는 반환값만 새로운 배열로 저장할 수 있음
+            ex)
+                let newArray = array.filter( { value => return value > 10 ; } )
