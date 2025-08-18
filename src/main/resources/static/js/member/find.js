@@ -45,13 +45,15 @@ const findPwd = async () => {
     try {
         const option = { method: "GET" }
         const response = await fetch(`/member/findPwd?mid=${mid}&mphone=${mphone}`, option);
-        const data = await response.json();
+        const data = await response.text();
+        // data가 단일 String 이므로 .json() 이 아닌 .text()로 받음
         console.log(data)
 
         html += `<div>임시 비밀번호 발급</div>
         <div style="font-size:1.5rem; font-weight:600;">${data}</div>`
 
         newpwd.innerHTML = html;
+
     } catch (error) {
         console.log(error)
         html += `아이디와 연락처가 일치하는 계정정보가 없습니다. 다시 확인해주세요.`

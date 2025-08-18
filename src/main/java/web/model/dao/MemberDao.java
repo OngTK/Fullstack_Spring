@@ -198,11 +198,11 @@ public class MemberDao extends Dao {
     } // func end
 
     // [10] PW 찾기·초기화
-    public int findMpwd(String mid, String mphone, int randPwd) {
+    public String findMpwd(String mid, String mphone,String randPwd) {
         try {
             String sql = "update member set mpwd = ? where (mid=? and mphone = ?)";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1,randPwd);
+            ps.setString(1,randPwd);
             ps.setString(2,mid);
             ps.setString(3,mphone);
 
@@ -213,7 +213,7 @@ public class MemberDao extends Dao {
         } catch (Exception e) {
             System.out.println("MemberDao.findMpwd" + e);
         }
-        return 0;
+        return null;
     }
 
 } // class end

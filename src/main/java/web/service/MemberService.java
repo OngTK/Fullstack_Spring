@@ -78,8 +78,8 @@ public class MemberService {
     } // func end
 
     // [10] 비밀번호 찾기·초기화
-    public int findMpwd(String mid, String mphone, int randPwd) {
-        int mpwd = memberDao.findMpwd(mid,mphone,randPwd);
+    public String findMpwd(String mid, String mphone, String randPwd) {
+        String mpwd = memberDao.findMpwd(mid,mphone,randPwd);
         return mpwd;
     }
 

@@ -195,16 +195,23 @@ public class MemberController {
     // 처리: 아이디+연락처 일치 시 새로운 난수 비밀번호 생성 후 반환
     // 생성된 비밀번호를 DB에 업데이트(임시 비밀번호로 사용)
     @GetMapping("/findPwd")
-    public int findMpwd(@RequestParam String mid, @RequestParam String mphone) {
+    public String findMpwd(@RequestParam String mid, @RequestParam String mphone) {
         System.out.println("MemberController.findMpwd");
         System.out.println("mid = " + mid + ", mphone = " + mphone);
 
         // [10.1] 난수 발생, 6자리 난수 발생
-        Random random = new Random();
-        int randPwd = random.nextInt(1000000);
+        String ranStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        String randPwd = "";
+        for (int i = 1; i <= 6; i++) {
+            Random random = new Random();
+            int strlen= ranStr.length();
+            int ranIndex = random.nextInt( strlen );
+            char c = ranStr.charAt(ranIndex);
+            randPwd += c;
+        }
 
         // [10.1] service의 메소드 실행
-        int result = memberService.findMpwd(mid, mphone, randPwd);
+        String result = memberService.findMpwd(mid, mphone, randPwd);
         return result;
     }//func end
 
