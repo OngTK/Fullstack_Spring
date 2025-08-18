@@ -1,5 +1,10 @@
+#container{
+    display: flex;
+    height: 90vh; /* vh :반응형 높이, 화면에서의 크기/비율 / 헤더를 제외한 90 */
+}
 #map{
     width: 80%;
+    height: auto;
 }
 
 #sidebar{

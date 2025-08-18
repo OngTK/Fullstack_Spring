@@ -12,8 +12,8 @@
     <body>
         <jsp:include page="/header.jsp"></jsp:include>
 
-        <div id="container">
-            <h3> 데이터 지도 </h3>
+        <h3> 데이터 지도 </h3>
+        <div id="container">            
             <div id="map"></div>
             <div id="sidebar"></div>
             
