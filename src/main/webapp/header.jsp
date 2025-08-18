@@ -14,8 +14,8 @@
         <div id="header">
             <ul id="sub-menu">
                 <li><a href="/index.jsp"><img src="/img/tj_logo.jpg"></a></li>
-                <li><a href="/datago/data/jsp">공공데이터</a></li>
-                <li><a href="#">메뉴2</a></li>
+                <li><a href="/datago/data.jsp">공공데이터</a></li>
+                <li><a href="/kakao/map.jsp">카카오지도</a></li>
                 <li><a href="#">메뉴3</a></li>
             </ul>
 
