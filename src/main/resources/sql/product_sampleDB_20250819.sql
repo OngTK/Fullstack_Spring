@@ -85,3 +85,5 @@ select * from member;
 select * from product;
 select * from productimg;
 select * from pointlog;
+
+select * from pointlog where mno = 1 order by pldate desc; 

@@ -15,8 +15,18 @@ import java.util.List;
 @RequestMapping("/point")
 public class PointLogController {
 
+
     @Autowired
     private PointLogService pointLogService;
+
+    // [1] 회원가입, 로그인 시 포인트 부여
+    public boolean pointAssignment(int mno, int reason) {
+        System.out.println("PointLogController.pointAssignment");
+        System.out.println("mno = " + mno + ", reason = " + reason);
+
+        boolean result = pointLogService.pointAssignment(mno, reason);
+        return result;
+    } // func end
 
     // [2] mno 별 포인트 이력 출력
     @GetMapping("/pointlog")

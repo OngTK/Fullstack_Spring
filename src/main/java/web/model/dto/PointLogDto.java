@@ -14,7 +14,4 @@ public class PointLogDto {
     private String plcomment;
     private String pldate;
 
-    // 부가정보
-    private int totalPoint; //포인트합계
-
 } // class end

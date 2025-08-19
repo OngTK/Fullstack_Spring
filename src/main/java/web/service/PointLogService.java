@@ -13,6 +13,14 @@ public class PointLogService {
     @Autowired
     private PointLogDao pointLogDao;
 
+    // [1] 포인트 지급
+    // 회원가입(1) 시, 1000 point 지급
+    // 로그인(2) 시, 10 point
+    public boolean pointAssignment(int mno, int reason) {
+        boolean result = pointLogDao.pointAssignment(mno, reason);
+        return result;
+    } // fund end
+
     // [2] mno 별 포인트 이력 출력
     public List<PointLogDto> mnoPointLog(int mno) {
         List<PointLogDto> list = pointLogDao.mnoPointLog(mno);

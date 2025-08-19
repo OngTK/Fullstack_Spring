@@ -16,6 +16,8 @@ public class MemberController {
 
     @Autowired
     private MemberService memberService;
+    @Autowired
+    private PointLogController pointLogController;
 
     // [1] 회원가입
     @PostMapping("/signup")
@@ -24,6 +26,9 @@ public class MemberController {
         System.out.println("memberDto = " + memberDto);
         // [1.1] Service에 메소드 실행
         int result = memberService.signup(memberDto);
+
+        // [250819_회원가입시 포인트 지급 기능 추가]
+        if( result > 0 ) pointLogController.pointAssignment(result, 1);
 
         // [1.2] mno를 반환
         return result;
@@ -46,6 +51,9 @@ public class MemberController {
         if (result >= 1) {
             // [2.4.1] Session 정보에 속성 추가
             session.setAttribute("loginMno", result);
+
+            // [250819_로그인 시 포인트 지급 기능 추가]
+            pointLogController.pointAssignment(result, 2);
         }
         // [2.5] 결과 반환
         return result;
