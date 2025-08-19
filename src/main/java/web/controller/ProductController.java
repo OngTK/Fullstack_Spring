@@ -2,14 +2,13 @@ package web.controller;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import web.model.dto.ProductDto;
 import web.service.FileService;
 import web.service.ProductService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/product")
@@ -25,6 +24,9 @@ public class ProductController {
     // [1] 제품 등록
     @PostMapping("/create")
     public int createProduct(@ModelAttribute ProductDto productDto, HttpSession session) {
+        System.out.println("ProductController.createProduct");
+        System.out.println("productDto = " + productDto + ", session = " + session);
+
         // [1.1] 로그인 상태 확인, 비로그인 시 0을 반환
         if (session.getAttribute("loginMno") == null) {
             return 0;
@@ -59,6 +61,14 @@ public class ProductController {
     }
 
     // [2] 제품 전체조회
+    @GetMapping("/list")
+    public List<ProductDto> getAllProduct(){
+        System.out.println("ProductController.getAllProduct");
+        System.out.println();
+
+        List<ProductDto> productDtoList = productService.getAllProduct();
+        return productDtoList;
+    }
 
     // [3] 제품 개별조회
 
