@@ -52,3 +52,30 @@ const onDelete = async () => {
         alert("[경고] 관리자에게 문의하세요.")
     }
 } // func end
+
+// [3] 포인트 이력 조회 (※250819)
+const pointlog = async () => {
+    console.log("pointlog func exe")
+
+    const pointTbody = document.querySelector("#pointTbody")
+    let html = '';
+    try {
+        const option = { method: "GET" }
+        const response = await fetch("/point/pointlog", option)
+        const data = await response.json()
+        console.log(data)
+
+        data.forEach((value) => {
+            html += `<tr>
+                <td>${value.pldate}</td>
+                <td>${value.plpoint}</td>
+                <td>${value.plcomment}</td>
+            </tr>`
+        });
+
+    } catch (error) {
+        alert("[경고 관리자에게 문의하세요. \t" + error);
+    }
+    pointTbody.innerHTML = html;
+} // func end
+pointlog()

@@ -12,9 +12,7 @@ const dataAPI = async () => {
     const response = await fetch(URL + serviceKey, option)
     const data = await response.json()
     console.log(data)
-
-    console.log(data.data)
-
+    
     // [1.3] JSP/html 작업하기
     const dataTbody = document.querySelector("#dataTbody")
     let html = "";
