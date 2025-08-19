@@ -11,13 +11,13 @@ public class ProductService {
     @Autowired
     private ProductDao productDao;
 
-    // [1] 제품 등록
+    // [1-1] 제품 등록
     public int createProduct(ProductDto productDto) {
         int result = productDao.createProduct(productDto);
         return result;
     }
 
-    // [2] 제품 이미지 등록
+    // [1-2] 제품 이미지 등록
     public boolean createProductImages(int pno, String fileName) {
         boolean result = productDao.createProductImages(pno,fileName);
         return result;

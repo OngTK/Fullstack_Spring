@@ -10,7 +10,7 @@ import java.sql.Statement;
 @Repository
 public class ProductDao extends Dao {
 
-    // [1] 제품 등록
+    // [1-1] 제품 등록
     public int createProduct(ProductDto productDto) {
         try {
             String sql = "insert into product(pname,pprice,pcomment,plat,plng,mno)value(?,?,?,?,?,?)";
@@ -37,7 +37,7 @@ public class ProductDao extends Dao {
         return 0; // 실패시 0 반환
     } // func end
 
-    // [2] 제품 이미지 등록
+    // [1-2] 제품 이미지 등록
     public boolean createProductImages(int pno, String fileName) {
         try {
             String sql = "insert into productimg( pimgname , pno) values (?,?)";
