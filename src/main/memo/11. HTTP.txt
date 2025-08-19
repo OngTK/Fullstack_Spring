@@ -1,0 +1,79 @@
+[ HTTP · HyperText Transfer Protocol ]
+    1) 정의
+        Web·App에서 사용되는 문자/바이트 통신 규약
+    2) 특징
+        (1) 무상태 프로토콜 : Status 없음, 저장 기능 없음
+        (2) 독립적, 이전 통신과 다음 통신과의 관련이 없음
+        (3) TCP/IP 프로토콜에 종속되어 동작 >> IP를 사용
+
+    3) 주소체계
+        - http:// ip :port / 자원위치
+            * 자원위치
+                - JSP는 프로젝트내 webapp 폴더 이하
+                - JS/CSS/IMG : resources > static 폴더 이하
+                - controller는 @RequestMapping, @Mapping 으로 주석된 경로
+        (1) URL : web 자원의 주소, 네트워크 상 자료의 위치를 나타내는 표시 규약
+        (2) URI : 각종 자료들의 유일한 이름이나 위치를 표시하는 규약 > URL + QueryString
+
+    4) HTTP HEADER
+        - HTTP 통신 정보 및 옵션 정보를 포함
+        (1) HTTP METHOD : HTTP를 이용한 통신 요청을 분류
+            ① GET    : Read
+            ② POST   : Create
+            ③ PUT    : Update
+            ④ DELETE : Delete
+        (2) HTTP BODY : HTTP를 이용한 데이터 송신시 내용·본문에 해당
+        (3) HTTP Content-Type : HTTP의 요청과 응답의 BODY의 데이터 형식을 나타내는 정보
+            ① 목적
+                - 서버와 클라이언트가 주고받는 데이터의 형식을 명시
+            ② 종류
+                - text/html                         : html 문서 (jsp 포함)
+                - text/plain                        : 일반 text (Java에서 String을 반환)
+                - application/json                  : JSON 데이터 (REST API의 주 데이터)
+                - application/x-www-form-urlencoded : 폼 형식 데이터 (HTML <form> 마크업 )
+            - multipart/form-data                   : 첨부파일 업로드, 대용량 데이터(byte)
+        (4) HTTP HOST : HTTP 이용시 통신을 요청하는 서버의 도메인 주소
+
+    5) 사용처
+        (1) 브라우저     : 크롬, 엣지, 사파리 등의 웹주소 입력창
+        (2) Talend API  : 개발자 입장에서 Http 테스트
+        (3) JS          : fetch, ajax(jQuery), axios(Node.js) 등의 HTTP 통신 라이브러리
+
+    6) HTTP 통신의 데이터 송신 방법
+        (방법 1)
+            QueryString을 이용
+            - POST, GET, PUT, DELETE
+            - URL 경로상에 데이터가 노출됨
+            - URL 주소 뒤 ? 매개변수 & 값 으로 표현
+            - Spring : @RequestParam 을 통해서 매개변수로 연결
+
+        (방법 2) BODY를 이용하는 방법
+            - POST, PUT
+            - HTTP 요청·응답의 내용 자체를 BODY로 전달
+            - Spring : @RequestBody
+
+        (방법 3) FORM 이용
+            - POST
+            - 종류
+                ① 데이터 위주 폼 : application/x-www-form-urlencoded
+                ② 첨부파일 폼    : multipart/form-data
+            - Spring : @ModelAttribute
+
+        7) HTTP 응답 코드
+            (1) 정의
+                - 서버가 클라이언트의 요청에 대한 결과를 나타내는 코드
+            (2) 종류
+                - 100번 대 : 요청을 받고 진행하는 상태
+                - 200번 대 : 요청을 받고 응답을 처리한 상태
+                    - 200 : 요청을 받았으며, 응답자료가 있음
+                    - 201 : 저장을 성공하고, 응답자료가 있음
+                    - 202 : 저장을 성공하고, 응답자료가 없음
+                - 300번 대 : 요청을 완료하기 위하여 추가 조치가 필요한 상태
+                - 400번 대 : 클라이언트 오류
+                    - 400 : 서버가 이해할 수 없는 요청 (ex. 매핑오류)
+                    - 401 : 권한없음
+                    - 403 : 권한 거부
+                    - 404 : 서버 요청에 따른 주소 위치에 자원이 존재하지 않음
+                    - 409 : 중복 값
+                - 500번 대 : 서버 오류
+                    - 500 : 서버의 예기치 못한 오류 발생
