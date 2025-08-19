@@ -58,7 +58,7 @@ public class ProductController {
         }
         // [1.4] 결과 반환
         return result;
-    }
+    } // func end
 
     // [2] 제품 전체조회
     @GetMapping("/list")
@@ -68,8 +68,16 @@ public class ProductController {
 
         List<ProductDto> productDtoList = productService.getAllProduct();
         return productDtoList;
-    }
+    } // func end
 
     // [3] 제품 개별조회
+    @GetMapping("/find")
+    public ProductDto getProduct( int pno ){
+        System.out.println("ProductController.getProduct");
+        System.out.println("pno = " + pno);
+
+        ProductDto productDto = productService.getProduct(pno);
+        return productDto;
+    }
 
 } // class end

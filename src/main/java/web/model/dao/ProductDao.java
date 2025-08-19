@@ -94,8 +94,31 @@ public class ProductDao extends Dao {
             System.out.println(e);
         }
         return list;
-    }
+    } // func end
 
     // [3] 제품 개별조회
+    public ProductDto getProduct(int pno) {
+        try {
+            String sql = "select * from product where pno = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, pno);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                ProductDto productDto = new ProductDto(); // [2-1] dto 생성
+                productDto.setPno(rs.getInt("pno"));
+                productDto.setPname(rs.getString("pname"));
+                productDto.setPcomment(rs.getString("pcomment"));
+                productDto.setPprice(rs.getInt("pprice"));
+                productDto.setPdate(rs.getString("pdate"));
+                productDto.setPlat(rs.getDouble("plat"));
+                productDto.setPlng(rs.getDouble("plng"));
+                productDto.setMno(rs.getInt("mno"));
+                return productDto; // dto 반환
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    } // func end
 
 } // class end

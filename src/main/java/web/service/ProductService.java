@@ -17,13 +17,13 @@ public class ProductService {
     public int createProduct(ProductDto productDto) {
         int result = productDao.createProduct(productDto);
         return result;
-    }
+    } // func end
 
     // [1-2] 제품 이미지 등록
     public boolean createProductImages(int pno, String fileName) {
         boolean result = productDao.createProductImages(pno,fileName);
         return result;
-    }
+    } // func end
 
     // [2] 제품 전체조회
     public List<ProductDto> getAllProduct(){
@@ -37,10 +37,23 @@ public class ProductService {
         }
         // 3. 반환
         return productDtoList;
-    }
+    } // func end
 
     // [3] 제품 개별조회
+    public ProductDto getProduct( int pno ){
+        // [3.1] Dao의 메소드 실행
+        ProductDto productDto = productDao.getProduct(pno);
 
+        // [3.2] dto의 첨부파일 조회
+        if( productDto != null ){
+            List<String> images = productDao.getProductImages(pno);
+            productDto.setImages(images);
+        }
+
+        // [3.3] 결과 반환
+        return productDto;
+
+    } // func end
 
 } // class end
 
