@@ -219,6 +219,7 @@ public class MemberDao extends Dao {
         return null;
     }
 
+    // 20250820 기능 추가
     // [11] 프로필 사진 DB 등록 ============================================
     public boolean postMimg (MemberDto memberDto){
         try{
