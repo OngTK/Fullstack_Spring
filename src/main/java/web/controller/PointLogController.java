@@ -20,8 +20,7 @@ public class PointLogController {
     private PointLogService pointLogService;
 
     // [1] 회원가입, 로그인 시 포인트 부여
-    // membercontroller에서 회원가입/로그인 처리 후 마지막에
-    // 매개변수를 회원가입은 (mno, 1), 로그인은 (mno, 2)를 반환
+    // point 처리는 memberController 에서 point service 로 처리하도록 정의
     public boolean pointAssignment(int mno, int reason) {
         System.out.println("PointLogController.pointAssignment");
         System.out.println("mno = " + mno + ", reason = " + reason);
