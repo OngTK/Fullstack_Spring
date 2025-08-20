@@ -22,9 +22,12 @@ const getList = async () => {
 const getMap = async () => {
     console.log('getMap func exe')
 
+    // [추가!] 현재 사용자의 위치 좌표 가져오기
+    const position = await myPosition();
+
     // [2.1] 지도 생성
     var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
-        center: new kakao.maps.LatLng(37.489915, 126.723603), // 지도의 중심좌표
+        center: new kakao.maps.LatLng( position.coords.latitude, position.coords.longitude), // 지도의 중심좌표
         level: 5 // 지도의 확대 레벨
     });
 

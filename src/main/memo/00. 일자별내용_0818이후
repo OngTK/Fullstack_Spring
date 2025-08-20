@@ -17,6 +17,7 @@ https://docs.google.com/spreadsheets/d/1xdLQnrAlXw0nD1sSvQCNxVm4wvMUkZhCgJy5hcEM
     upload/download 이론
     web
         - product 화면 구현
+    position.js
 
     ＊ Dao 단에서 SQL 작업후 try 마지막에
     rs.close() / ps.close() 작업은 필요
