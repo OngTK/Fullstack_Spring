@@ -96,3 +96,9 @@ CREATE TABLE memberimg (
 	CONSTRAINT PRIMARY KEY (mimgno),
 	CONSTRAINT FOREIGN KEY (mno) REFERENCES member(mno) ON DELETE CASCADE
 );
+
+select * from memberimg;
+
+select * from memberimg where mno=7 order by mimgno desc limit 1; 
+
+update memberimg set mimgname = "coffee1.jpg" where mimgno=1;
