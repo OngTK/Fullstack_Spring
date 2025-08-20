@@ -14,18 +14,13 @@ public class PointLogDao extends Dao {
     // [1] 포인트 지급
     // 회원가입(1) 시, 1000 point 지급
     // 로그인(2) 시, 10 point
-    public boolean pointAssignment(int mno, int reason) {
+    public boolean pointAssignment(PointLogDto pointLogDto) {
         try {
             String sql = "insert into pointlog(mno, plpoint, plcomment) values (?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1,mno);
-            if( reason == 1 ){ // 회원가입
-                ps.setInt(2,1000);
-                ps.setString(3, "회원가입");
-            }  else if (reason == 2 ){ // 로그인
-                ps.setInt(2,10);
-                ps.setString(3, "로그인");
-            }
+            ps.setInt(1,pointLogDto.getMno());
+            ps.setInt(2,pointLogDto.getPlpoint());
+            ps.setString(3,pointLogDto.getPlcomment());
             int result = ps.executeUpdate();
             if(result == 1) return true;
         } catch (Exception e) {

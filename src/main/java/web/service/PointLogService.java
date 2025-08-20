@@ -16,8 +16,8 @@ public class PointLogService {
     // [1] 포인트 지급
     // 회원가입(1) 시, 1000 point 지급
     // 로그인(2) 시, 10 point
-    public boolean pointAssignment(int mno, int reason) {
-        boolean result = pointLogDao.pointAssignment(mno, reason);
+    public boolean pointAssignment(PointLogDto pointLogDto) {
+        boolean result = pointLogDao.pointAssignment(pointLogDto);
         return result;
     } // fund end
 
