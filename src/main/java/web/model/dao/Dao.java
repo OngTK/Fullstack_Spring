@@ -10,7 +10,7 @@ public class Dao {
     // DB 연결 기초작업
     private String db_url = "jdbc:mysql://localhost:3306/springweb";
     private String db_user = "root";
-    private String db_password = "1234";
+    private String db_password = "Ongga3200!!";
 
     public Connection conn;
 

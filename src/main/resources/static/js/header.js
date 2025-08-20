@@ -92,6 +92,3 @@ const mnoPoint = async () => {
 
     return html;
 } // func end
-
-
-// [4] mno

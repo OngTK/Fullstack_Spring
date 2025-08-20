@@ -36,22 +36,31 @@ oninfo()
 const update = async () => {
     console.log('update func exe')
 
-    const mnameInput = document.querySelector("#mname")
-    const mphoneInput = document.querySelector("#mphone")
-    const mname = mnameInput.value;
-    const mphone = mphoneInput.value;
+    // const mnameInput = document.querySelector("#mname")
+    // const mphoneInput = document.querySelector("#mphone")
+    // const mname = mnameInput.value;
+    // const mphone = mphoneInput.value;
+    
+    // [250820] 프로필 사진 추가와 함께 폼기능 추가
+    const memberForm = document.querySelector("#memberForm")
+    const memberFormData = new FormData(memberForm)
     
     try {
-        const obj = {mname, mphone}
-        const option = {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(obj)
-        }
+        // const obj = {mname, mphone}
+        // const option = {
+        //     method: "PUT",
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify(obj)
+        // }
+        // const response = await fetch("/member/update", option);
+        // const data = await response.json();
+        // console.log(data)
+        
+        const option = {method:"PUT", body : memberFormData}
         const response = await fetch("/member/update", option);
         const data = await response.json();
         console.log(data)
-
+        
         if(data){
             alert("수정 성공")
             location.href = "/member/info.jsp"

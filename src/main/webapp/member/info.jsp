@@ -18,11 +18,14 @@
 
             <div id="info">
                 <div>회원번호 : <span id="mno" class="infoArea"></span> </div>
-                <div>아이디 :<span id="mid" class="infoArea"></span> </div>
-                <div>이름 :<span id="mname" class="infoArea"></span> </div>
-                <div>전화번호 :<span id="mphone" class="infoArea"></span> </div>
-                <div>가입일자 :<span id="mdate" class="infoArea"></span> </div>
+                <div>아이디 :<span  id="mid" class="infoArea"></span> </div>
+                <div>이름 :<span  id="mname" class="infoArea"></span> </div>
+                <div>전화번호 :<span  id="mphone" class="infoArea"></span> </div>
+                <div>가입일자 :<span  id="mdate" class="infoArea"></span> </div>
+                <div id="profileArea">현재 프로필사진
 
+                </div>
+                <br />
                 <a href="/member/update.jsp">회원정보 수정</a><br />
                 <a href="/member/pwdupdate.jsp">비밀번호 수정</a><br />
             </div>

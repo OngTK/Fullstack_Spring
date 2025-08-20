@@ -138,7 +138,7 @@ public class MemberController {
 
     // [6] 회원 정보 수정
     @PutMapping("/update")
-    public boolean update(@RequestBody MemberDto memberDto, HttpServletRequest request) {
+    public boolean update(@ModelAttribute MemberDto memberDto, HttpServletRequest request) {
         System.out.println("MemberController.update");
         System.out.println("memberDto = " + memberDto + ", request = " + request);
 
@@ -157,6 +157,20 @@ public class MemberController {
 
         // [6.5] service 메소드 실행
         boolean result = memberService.update(memberDto);
+
+        // [ 250820 추가 1 ] 업로드 이미지 여부 확인 후 File 등록 처리
+        // [6-(1)-1] 업로드 이미지 여부 확인 후 FileService 작업
+        if( result == true && !memberDto.getUpload().isEmpty() ){
+            // [mno가 정상적으로 발급 + getUpload가 존재]
+            // [6-(1)-2] fileServer에 업로드 요청
+            MultipartFile multipartFile = memberDto.getUpload();
+            String fileName = fileService.fileUpload(multipartFile);
+
+            // [6-(1)-3] file 관련 정보를 memberimg 에 저장
+            memberDto.setMno(mno);
+            memberDto.setMimgname(fileName);
+            boolean result2 = memberService.postMimg(memberDto);
+        }
 
         // [6.6] 결과 반환
         return result;

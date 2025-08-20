@@ -11,3 +11,9 @@
     font-weight: 600;
     margin: 0.1rem;
 }
+
+.profileImgBox{
+    height: 200px;
+    width: 200px;
+    background-size: contain;
+}

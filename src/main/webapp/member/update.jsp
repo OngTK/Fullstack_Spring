@@ -16,14 +16,18 @@
         <div id="container">
             <h3>회원 정보 수정</h3>
 
-            <div>회원번호 :  <input type="text" id = "mno" class = "infoArea" disabled/> </div>
-            <div>아이디 :<input type="text" id = "mid" class = "infoArea" disabled > </div>
-            <div>이름 :<input type="text" id = "mname" class = "infoArea" > </div>
-            <div>전화번호 :<input  type="text" id = "mphone" class = "infoArea" onkeyup="phoneCheck()"><div class="phoneCheck"></div> </div>
-            <div>가입일자 :<input  type="text" id = "mdate" class = "infoArea"  disabled> </div>
-  
+            <form id="memberForm">
+                <div>회원번호 : <input type="text" name="mno" id="mno" class="infoArea" disabled /> </div>
+                <div>아이디 :<input type="text" name="mid" id="mid" class="infoArea" disabled> </div>
+                <div>이름 :<input type="text" name="mname" id="mname" class="infoArea"> </div>
+                <div>전화번호 :<input type="text" name="mphone" id="mphone" class="infoArea" onkeyup="phoneCheck()">
+                    <div class="phoneCheck"></div>
+                </div>
+                <div>가입일자 :<input type="text" name="mdate" id="mdate" class="infoArea" disabled> </div>
+                <div>프로필 : <input type="file" name="upload" id="mimgname"></div>
+            </form>
             <button type="button" onclick="update()">수정하기</button>
-            
+
         </div>
 
         <script src="/js/member/update.js"></script>

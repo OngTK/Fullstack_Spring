@@ -11,6 +11,7 @@ const oninfo = async () => {
     const mphoneInput = document.querySelector("#mphone")
     const mdateInput = document.querySelector("#mdate")
 
+    const profileArea = document.querySelector("#profileArea")
     // [1.2] fetch
     try {
         const option = { method: "GET" }
@@ -24,8 +25,20 @@ const oninfo = async () => {
         mphoneInput.innerHTML = data.mphone;
         mdateInput.innerHTML = data.mdate;
 
-    } catch { // 비로그인 상태
-        alert("[경고] 관리자에게 문의하세요.")
+        // [※ 250820 프로필 사진 기능 추가]
+        let imgSrc = '';
+        if (data.mimgname == null) {
+            imgSrc = `/img/basic_profile.jpg`
+        } else {
+            imgSrc = `/upload/${data.mimgname}`
+        }
+
+        profileArea.innerHTML = `<div>현재 프로필 사진</div>
+        <div class="profileImgBox" style="background-image: url(${imgSrc})"></div>`
+
+
+    } catch (error) { // 비로그인 상태
+        alert("[경고] 관리자에게 문의하세요. \t" + error )
         location.href = "/member/login.jsp"
     }
 } // func end
