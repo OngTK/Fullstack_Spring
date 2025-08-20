@@ -20,28 +20,7 @@ public class PointLogController {
     private PointLogService pointLogService;
 
     // [1] 회원가입, 로그인 시 포인트 부여
-    // point 처리는 memberController 에서 point service 로 처리하도록 정의
-    public boolean pointAssignment(int mno, int reason) {
-        System.out.println("PointLogController.pointAssignment");
-        System.out.println("mno = " + mno + ", reason = " + reason);
-
-        String plcomment = "";
-        int plpoint = 0;
-        if(reason == 1 ){           // reason 1 : 회원가입
-            plcomment = "회원가입";
-            plpoint = 1000;
-        } else if (reason == 2) {   // reason 2 : 로그인
-            plcomment = "로그인";
-            plpoint = 10;
-        }
-        PointLogDto pointLogDto = new PointLogDto();
-        pointLogDto.setMno(mno);
-        pointLogDto.setPlpoint(plpoint);
-        pointLogDto.setPlcomment(plcomment);
-
-        boolean result = pointLogService.pointAssignment(pointLogDto);
-        return result;
-    } // func end
+    // point 처리는 memberController - pointService 로 처리하도록 정의
 
     // [2] mno 별 포인트 이력 출력
     @GetMapping("/pointlog")

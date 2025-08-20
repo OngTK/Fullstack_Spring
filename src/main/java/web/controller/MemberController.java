@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import web.model.dto.MemberDto;
 import web.service.MemberService;
+import web.service.PointLogService;
 
 import java.util.Map;
 import java.util.Random;
@@ -17,7 +18,7 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
     @Autowired
-    private PointLogController pointLogController;
+    private PointLogService pointLogService;
 
     // [1] 회원가입
     @PostMapping("/signup")
@@ -27,9 +28,8 @@ public class MemberController {
         // [1.1] Service에 메소드 실행
         int result = memberService.signup(memberDto);
 
-        // [250819_회원가입시 포인트 지급 기능 추가]
-        if( result > 0 ) pointLogController.pointAssignment(result, 1);
-
+        // [ 250820 수정 ] 회원가입 시, 1000point 부여 기능 수정
+        if(result > 0 ) pointLogService.pointAssignment(result,1);
         // [1.2] mno를 반환
         return result;
     } // func end
@@ -52,8 +52,8 @@ public class MemberController {
             // [2.4.1] Session 정보에 속성 추가
             session.setAttribute("loginMno", result);
 
-            // [250819_로그인 시 포인트 지급 기능 추가]
-            pointLogController.pointAssignment(result, 2);
+            // [ 250820 수정 ] 로그인 시, 10point 부여 기능 수정
+            pointLogService.pointAssignment(result,2);
         }
         // [2.5] 결과 반환
         return result;
