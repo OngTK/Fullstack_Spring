@@ -20,7 +20,7 @@ const myinfo = async () => {
         const point = await mnoPoint()
         console.log(point)
         // [1.3.1] 로그인 시, 정상 통신 fetch 
-        html += `<li><span>${d.mname}님 (현재 포인트:</span> <span id="mnoPoint" style="color:#0E2841; font-weight:600;">${point}</span> 점) </li>
+        html += `<li><span style="color:#0E2841; font-weight:600;">${d.mname}</span> 님 (현재 포인트: <span id="mnoPoint" style="color:#0E2841; font-weight:600;">${point}</span> 점) </li>
                 <li><a href="/member/info.jsp">내 정보</a></li>
                 <li><a href="#" onclick="logout()">로그아웃</a></li>`
 

@@ -36,6 +36,7 @@ public class MemberDao extends Dao {
                     return mno; // 회원가입 성공 시, 해당 회원의 mno를 반환
                 }
             }
+            ps.close();
         } catch (Exception e) {
             System.out.println("MemberDao.signup" + e);
         }
@@ -58,6 +59,8 @@ public class MemberDao extends Dao {
                 // [2.3] 결과반환 - 성공 시 mno 반환
                 return mno;
             }
+            ps.close();
+            rs.close();
         } catch (Exception e) {
             System.out.println("MemberDao.login" + e);
         }

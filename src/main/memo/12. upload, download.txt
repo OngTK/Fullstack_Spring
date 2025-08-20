@@ -1,0 +1,94 @@
+[ Upload ]
+    - 클라이언트가 서버에 데이터·파일을 전송하는 행위
+
+[ Download ]
+    - 서버가 클라이언트에게 데이터·파일을 전송하는 행위
+
+[ Stream ]
+    - 데이터의 흐름
+    - 데이터 입출·네트워크·파일 처리 등에서 사용되는 용어
+    - 단위 : byte
+
+[ Buffer ]
+    - Stream 처리 속도를 일청하게 하기 위한 임시 저장소
+    - ex) 버퍼링·Buffering
+
+[ Java Input·Output ]
+    - Input : 외부에서 Java 메모리로 들어오는 행위
+        ** class : FileInputStream
+    - Output : Java 메모리에서 외부로 나가는 행위
+        ** class : ServletOutputStream
+
+        [ Servlet ]
+            - Java의 HTTP 요청·응답 처리 기술을 가진 클래스
+
+[ UUID ]
+    - 범용 고유 식별자
+    - 사용법
+        ` String uuid = UUID.randomUUID().toString(); `
+
+[ 업로드 폴더 위치 ]
+    - src   : 개발자가 사용하는 폴더
+    - build : 프로그램·작성 코드가 실행되면 src 코드를 배포하기 위한 서버 폴더
+        → 따라서 클라이언트로부터의 파일처리는 build 내에 처리
+
+    1) PJ 경로
+        (1) C:\Users\tj-bu-702-12\Desktop\Fullstack_Spring\Fullstack_Spring\
+            : PC가 바뀔때마다 수정됨
+        (2) System.getProperty("user.dir")
+            : 프로젝트 폴더의 절대경로를 반환
+    2) 업로드 경로
+        (1) C:\Users\tj-bu-702-12\Desktop\Fullstack_Spring\Fullstack_Spring\build/resources/main/static/upload
+        (2) System.getProperty("user.dir") + "build/resources/main/static/upload"
+
+[ File 클래스 ]
+    - Java에서 외부 파일을 조작하는 클래스
+    1) `File file = new File( 파일경로)`
+    2) 주요 메소드
+        (1) .exists()   : 지정 경로에 파일이 존재 여부를 boolean 으로 반환
+        (2) .mkdir()    : 지정한 파일 경로를 생성, 경로가 존재하지 않으면 폴더를 생성함
+        (3) .length()   : 지정 파일의 용량(Byte)를 long 타입으로 반환
+        (4) .delete()   : 지정 경로에 파일을 삭제
+
+[ Spring Upload 구현 방법 ]
+    1) MultipartFile 인터페이스를 이용하여 첨부파일(바이트) 매핑
+        (1) MultipartFile : 대용량 바이트 파일을 매핑/조작할 때 사용하는 인터페이스
+                          : @ModelAttribute 로 스프링 controller 매개변수 매핑
+                          : 첨부파일이 여러 개 일때, ** List<MultipartFile> **
+        (2) 주요 메소드
+            - .transferTo( 파일객체 );      : 지정한 파일 객체 경로에 첨부파일을 업로드
+                                           : 일반 예외 발생
+            - .getOriginalFilename();      : 첨부파일의 파일명을 반환
+                - ` uuid + "_" + multipartFile.getOriginalFilename().replaceAll("_", "-") `
+                    : 중복 파일명에 대비하여 UUID와 함께 파일명을 지정하는 방법
+        (3) 첨부파일 용량 제한
+        application.properties 에서 정의
+        ```
+        # [2] 업로드 파일 최대 용량 제한 20250819
+        # default 1MB
+        # 파일 마다의 용량 제한
+        spring.servlet.multipart.max-file-size = 10MB
+
+        # 요청 마다의 용량제한,
+        # 한 요청에 여러 개의 파일이 존재할 수 있으므로
+        spring.servlet.mulipart.max-request-size = 100MB
+        ```
+
+[ Spring Download 구현 방법 ]
+    1) 흐름 구조
+        Java가 다운로드 받을 파일을 Byte로 가져옴
+            - 다운로드 할 파일의 경로+파일명 = path
+            - FileInputStream fin = new FileInputStream( file_path경로의 );
+            - long fileSize = file.length();
+            - byte[] bytes = new byte[(int)fileSize ];
+            - fin.read(bytes);
+        ↓
+        가져온 Byte를 클라이언트에게 보냄
+            - ServletOutputStream fout = response.getOutputStream();
+            - fout.write(bytes);
+
+    2) output을 브라우저의 다운로드 형식으로 지정
+        response.setHeader( "Content-Disposition", "attachment;filename="+ "파일명" );
+
+    3) Stream·Buffer을 안전하게 닫기
+        fin.close();        : Stream 객체를 안전하게 닫기
