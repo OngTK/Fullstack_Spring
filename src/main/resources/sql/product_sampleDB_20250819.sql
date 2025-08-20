@@ -56,7 +56,7 @@ INSERT INTO productimg (pimgname, pno) VALUES
 ('greenfit2.jpg', 1),
 ('coffee1.jpg', 2);
 
--- ---------------------- pointlog ---------------------------------- --
+-- ---------------------- pointlog *250819 ---------------------------------- --
 CREATE TABLE pointlog (
     plno      INT AUTO_INCREMENT,
     mno       INT NOT NULL,
@@ -87,3 +87,12 @@ select * from productimg;
 select * from pointlog;
 
 select * from pointlog where mno = 1 order by pldate desc; 
+
+-- ---------------------- memberimg *250820 ---------------------------------- --
+CREATE TABLE memberimg (
+	mimgno    INT AUTO_INCREMENT,              -- 회원 이미지 번호 (기본키)
+	mimgname  VARCHAR(255) NOT NULL,           -- 파일명
+	mno       INT NOT NULL,                    -- 회원 번호 (FK)
+	CONSTRAINT PRIMARY KEY (mimgno),
+	CONSTRAINT FOREIGN KEY (mno) REFERENCES member(mno) ON DELETE CASCADE
+);

@@ -14,13 +14,17 @@
         <jsp:include page="/header.jsp"></jsp:include>
         <div id="container">
             <h3>회원가입 페이지</h3>
-            아이디 : <input type="text" class="idInput" id="idInput" onkeyup="idCheck()">
+            <form id="memberForm">
+            아이디 : <input type="text" name="mid" class="idInput" id="idInput" onkeyup="idCheck()">
             <div class="idCheck"> </div>
-            비밀번호 : <input type="password" class="pwdInput" id="pwdInput"> <br />
-            이름 : <input type="text" class="nameInput" id="nameInput"> <br />
-            연락처 : <input type="text" class="phoneInput" id="phoneInput" placeholder="010-0000-0000"
+            비밀번호 : <input type="password" name="mpwd" class="pwdInput" id="pwdInput"> <br />
+            이름 : <input type="text" name="mname" class="nameInput" id="nameInput"> <br />
+            연락처 : <input type="text" name="mphone" class="phoneInput" id="phoneInput" placeholder="010-0000-0000"
                 onkeyup="phoneCheck()">
             <div class="phoneCheck"> </div>
+            이미지 : <input type="file" name="upload" class="uploadFile" />
+            </form>
+            
             <button type="button" onclick="signup()">회원가입</button> <br />
             <a href="/member/login.jsp">로그인하기</a><br />
             <a href="/member/find.jsp">아이디/비밀번호 찾기</a><br />

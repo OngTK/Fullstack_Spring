@@ -8,31 +8,39 @@ const signup = async () => {
     console.log("signup exe func")
 
     // [1.0] signPass 유효성 검사 확인하기
-    if(signPass.includes(false)){
+    if (signPass.includes(false)) {
         alert("[경고] 유효성 검사에 오류가 있습니다. 올바른 정보를 입력해주세요.")
         return;
-    } 
+    }
 
     // [1.1] 입력정보 가져오기
-    const idInput = document.querySelector("#idInput")
-    const pwdInput = document.querySelector("#pwdInput")
-    const nameInput = document.querySelector("#nameInput")
-    const phoneInput = document.querySelector("#phoneInput")
+    // const idInput = document.querySelector("#idInput")
+    // const pwdInput = document.querySelector("#pwdInput")
+    // const nameInput = document.querySelector("#nameInput")
+    // const phoneInput = document.querySelector("#phoneInput")
 
-    const mid = idInput.value;
-    const mpwd = pwdInput.value;
-    const mname = nameInput.value;
-    const mphone = phoneInput.value;
+    // const mid = idInput.value;
+    // const mpwd = pwdInput.value;
+    // const mname = nameInput.value;
+    // const mphone = phoneInput.value;
+
+    const memberForm = document.querySelector("#memberForm")
+    const memberFormData = new FormData(memberForm)
 
     try {
-        const obj = { mid, mpwd, mname, mphone }
-        const option = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(obj)
-        }
-        const response = await fetch("/member/signup", option);
-        const data = await response.json();
+        // const obj = { mid, mpwd, mname, mphone }
+        // const option = {
+        //     method: "POST",
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify(obj)
+        // }
+        // const response = await fetch("/member/signup", option);
+        // const data = await response.json();
+        // console.log(data)
+
+        const option = { method: "POST", body: memberFormData }
+        const response = await fetch("/member/signup", option)
+        const data = await response.json()
         console.log(data)
 
         if (data > 0) {
@@ -58,7 +66,7 @@ const idCheck = async () => {
     let html = ""
 
     // [2.2] ID 길이 유효성 검사
-    if(mid.length<6){
+    if (mid.length < 6) {
         html += `<span style="color:red">아이디는 6글자 이상으로만 가능합니다.</span>`
         signPass[0] = false;
         idCheck.innerHTML = html
@@ -74,10 +82,10 @@ const idCheck = async () => {
         // [2.4] 결과
         if (data) {
             html += `<span style="color:red">이미 존재하는 아이디입니다.</span>`
-                    signPass[0] = false;
+            signPass[0] = false;
         } else {
             html += `<span style="color:blue">사용 가능한 아이디입니다.</span>`
-                    signPass[0] = true;
+            signPass[0] = true;
         }
     } catch {
         alert("[경고] 관리자에게 문의하세요")
@@ -98,7 +106,7 @@ const phoneCheck = async () => {
     let html = ""
 
     // [2.2] 길이 검사
-    if( mphone.length != 13 ){
+    if (mphone.length != 13) {
         html += `<span style="color:red">하이픈(-)을 포함한 13자리로 입력해주세요.</span>`
         phoneCheck.innerHTML = html;
         return;
@@ -118,7 +126,7 @@ const phoneCheck = async () => {
             html += `<span style="color:blue">사용 가능한 전화번호입니다.</span>`
             signPass[1] = true;
         }
-    } catch(error) {
+    } catch (error) {
         alert("[경고] 관리자에게 문의하세요")
         console.log(error)
     }

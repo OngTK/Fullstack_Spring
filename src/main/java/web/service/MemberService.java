@@ -81,6 +81,16 @@ public class MemberService {
     public String findMpwd(String mid, String mphone, String randPwd) {
         String mpwd = memberDao.findMpwd(mid,mphone,randPwd);
         return mpwd;
-    }
+    } // func end
+
+    // [250820 추가] 회원 이미지 등록 관련 기능 추가
+    // 파일등록을 FileServer에서 담당
+    // 여기서는 productimg table 등록을 담당
+    public boolean postMimg (MemberDto memberDto){
+        boolean result = memberDao.postMimg(memberDto);
+        return result;
+    } // func end
+
+
 
 } // class end

@@ -23,3 +23,5 @@ https://docs.google.com/spreadsheets/d/1xdLQnrAlXw0nD1sSvQCNxVm4wvMUkZhCgJy5hcEM
     rs.close() / ps.close() 작업은 필요
 
     ** controller 에서 다른 controller 를 소환하지 않는다!!
+
+    과제 회원 프로필(사진) 구현

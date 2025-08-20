@@ -219,4 +219,22 @@ public class MemberDao extends Dao {
         return null;
     }
 
+    // [11] 프로필 사진 DB 등록 ============================================
+    public boolean postMimg (MemberDto memberDto){
+        try{
+            String sql = "insert into memberimg(mimgname, mno) values (?,?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,memberDto.getMimgname());
+            ps.setInt(2,memberDto.getMno());
+            int count = ps.executeUpdate();
+            if(count == 1){
+                return true;
+            }
+            ps.close();
+        } catch (Exception e) {
+            System.out.println("MemberImgDao.profileImgAss "+e);
+        }
+        return false;
+    } // func end
+
 } // class end

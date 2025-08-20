@@ -4,7 +4,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import web.model.dto.MemberDto;
+import web.service.FileService;
 import web.service.MemberService;
 import web.service.PointLogService;
 
@@ -19,17 +21,33 @@ public class MemberController {
     private MemberService memberService;
     @Autowired
     private PointLogService pointLogService;
+    @Autowired
+    private FileService fileService;
 
     // [1] 회원가입
     @PostMapping("/signup")
-    public int signup(@RequestBody MemberDto memberDto) {
+    public int signup(@ModelAttribute MemberDto memberDto) {
         System.out.println("MemberController.signup");
         System.out.println("memberDto = " + memberDto);
         // [1.1] Service에 메소드 실행
         int result = memberService.signup(memberDto);
 
-        // [ 250820 수정 ] 회원가입 시, 1000point 부여 기능 수정
-        if(result > 0 ) pointLogService.pointAssignment(result,1);
+        // [ 250820 수정 1 ] 회원가입 시, 1000point 부여 기능 수정
+        if( result > 0 ) pointLogService.pointAssignment(result,1);
+
+        // [ 250820 추가 2 ] 업로드 이미지 여부 확인 후 File 등록 처리
+        // [1-(2)-1] 업로드 이미지 여부 확인 후 FileService 작업
+        if( result > 0 && !memberDto.getUpload().isEmpty() ){
+            // [mno가 정상적으로 발급 + getUpload가 존재]
+            // [1-(2)-2] fileServer에 업로드 요청
+            MultipartFile multipartFile = memberDto.getUpload();
+            String fileName = fileService.fileUpload(multipartFile);
+
+            // [1-(2)-3] file 관련 정보를 memberimg 에 저장
+            memberDto.setMno(result);
+            memberDto.setMimgname(fileName);
+            boolean result2 = memberService.postMimg(memberDto);
+        }
         // [1.2] mno를 반환
         return result;
     } // func end
