@@ -91,7 +91,7 @@ const idCheck = async () => {
         alert("[경고] 관리자에게 문의하세요")
     }
     idCheck.innerHTML = html;
-}
+} // func end
 
 // [3] 연락처 중복검사
 const phoneCheck = async () => {
@@ -131,5 +131,5 @@ const phoneCheck = async () => {
         console.log(error)
     }
     phoneCheck.innerHTML = html;
-}
+} // func end
 

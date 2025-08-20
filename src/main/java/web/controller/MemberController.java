@@ -119,6 +119,10 @@ public class MemberController {
         // [4.5] service 메소드 실행
         MemberDto memberDto = memberService.info(mno);
 
+        // [4-(1)-1] 최신 사진 이미지 fileName 불러오기 (※ 250820 추가)
+        String fileName = memberService.getFileName(mno);
+        memberDto.setMimgname(fileName);
+
         // [4.6] 결과 반환
         return memberDto;
     } // func end
@@ -236,9 +240,12 @@ public class MemberController {
             randPwd += c;
         }
 
-        // [10.1] service의 메소드 실행
+        // [10.2] service의 메소드 실행
         String result = memberService.findMpwd(mid, mphone, randPwd);
         return result;
     }//func end
+
+
+    
 
 } // class end

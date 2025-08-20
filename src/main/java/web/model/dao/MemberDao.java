@@ -201,16 +201,16 @@ public class MemberDao extends Dao {
     } // func end
 
     // [10] PW 찾기·초기화
-    public String findMpwd(String mid, String mphone,String randPwd) {
+    public String findMpwd(String mid, String mphone, String randPwd) {
         try {
             String sql = "update member set mpwd = ? where (mid=? and mphone = ?)";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1,randPwd);
-            ps.setString(2,mid);
-            ps.setString(3,mphone);
+            ps.setString(1, randPwd);
+            ps.setString(2, mid);
+            ps.setString(3, mphone);
 
             int count = ps.executeUpdate();
-            if( count == 1 ){
+            if (count == 1) {
                 return randPwd;
             }
         } catch (Exception e) {
@@ -221,21 +221,42 @@ public class MemberDao extends Dao {
 
     // 20250820 기능 추가
     // [11] 프로필 사진 DB 등록 ============================================
-    public boolean postMimg (MemberDto memberDto){
-        try{
+    public boolean postMimg(MemberDto memberDto) {
+        try {
             String sql = "insert into memberimg(mimgname, mno) values (?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1,memberDto.getMimgname());
-            ps.setInt(2,memberDto.getMno());
+            ps.setString(1, memberDto.getMimgname());
+            ps.setInt(2, memberDto.getMno());
             int count = ps.executeUpdate();
-            if(count == 1){
+            if (count == 1) {
                 return true;
             }
             ps.close();
         } catch (Exception e) {
-            System.out.println("MemberImgDao.profileImgAss "+e);
+            System.out.println("MemberImgDao.profileImgAss " + e);
         }
         return false;
+    } // func end
+
+    // 20250820 기능 추가
+    // [12] fileName 반환 함수 =============================
+    public String getFileName(int mno) {
+        String fileName = null;
+        try {
+            String sql = "select * from memberimg where mno=? order by mimgno desc limit 1 ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,mno);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                fileName = rs.getString("mimgname");
+            }
+            ps.close();
+            rs.close();
+            return fileName;
+        } catch (Exception e) {
+            System.out.println("MemberDao.getFileName " + e);
+        }
+        return null;
     } // func end
 
 } // class end

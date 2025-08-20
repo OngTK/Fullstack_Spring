@@ -28,6 +28,7 @@
                 <li><a href="/member/singup.jsp">회원가입</a></li>
 
                 <!-- 로그인 시 구역 -->
+                <li><div id="profile"></div></li>
                 <li><span>OOO님 100 POINT </span></li>
                 <li><a href="/member/info.jsp">내 정보</a></li>
                 <li><a href="#" onclick="">로그아웃</a></li>

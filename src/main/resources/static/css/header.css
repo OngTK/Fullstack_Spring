@@ -26,3 +26,9 @@ a {
 #header>#log-menu>li{
     margin-left: 15px;
 }
+
+#profile{
+    height: 100px;
+    width: 100px;
+    background-size: contain;
+}

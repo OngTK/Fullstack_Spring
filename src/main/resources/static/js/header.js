@@ -17,13 +17,25 @@ const myinfo = async () => {
         const d = await response.json()
         console.log(d)
 
+        
+        // [※ 250819 포인트 표시 기능 추가]
         const point = await mnoPoint()
         console.log(point)
+
+        // [※ 250820 프로필 사진 기능 추가]
+        let imgSrc = '';
+        if( d.mimgname == null ){
+            imgSrc = `/img/basic_profile.jpg`
+        } else {
+            imgSrc = `/upload/${d.mimgname}`
+        }
+
         // [1.3.1] 로그인 시, 정상 통신 fetch 
-        html += `<li><span style="color:#0E2841; font-weight:600;">${d.mname}</span> 님 (현재 포인트: <span id="mnoPoint" style="color:#0E2841; font-weight:600;">${point}</span> 점) </li>
+        html += `  <li><div id="profile" style="background-image: url(${imgSrc})"></div></li>
+                <li><span style="color:#0E2841; font-weight:600;">${d.mname}</span> 
+                님 (현재 포인트: <span id="mnoPoint" style="color:#0E2841; font-weight:600;">${point}</span> 점) </li>
                 <li><a href="/member/info.jsp">내 정보</a></li>
                 <li><a href="#" onclick="logout()">로그아웃</a></li>`
-
     } catch {
         // [1.3.2] 비로그인 시, 비정상 통신 fetch 
         html += `<li><a href="/member/login.jsp">로그인</a></li>
@@ -68,16 +80,18 @@ const mnoPoint = async () => {
     const mnoPoint = document.querySelector("#mnoPoint")
 
     let html = ''
-    try{
-        const option = { method : "GET"}
-        const r = await fetch("/point/totalpoint",option)
+    try {
+        const option = { method: "GET" }
+        const r = await fetch("/point/totalpoint", option)
         const d = await r.text()
         console.log(d)
         html += `${d}`
-    } catch (error){
+    } catch (error) {
         alert("[경고] 관리자에게 문의하세요. \t" + error)
     }
 
     return html;
 } // func end
 
+
+// [4] mno
