@@ -111,3 +111,5 @@ CREATE TABLE payment (
     pdate     DATETIME DEFAULT now(),          -- 결제일시
     CONSTRAINT FOREIGN KEY (mno) REFERENCES member(mno) ON DELETE CASCADE
 );
+select * from payment;
+insert into payment(mno, pamount) values ( 1,1000 );
