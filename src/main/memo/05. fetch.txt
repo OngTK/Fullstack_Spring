@@ -38,6 +38,9 @@
            - Java로 부터의 결과, 응답 자료·결과를 Json 타입으로 변환
            - 응답객체는 일반적으로 'response / r'
            - 응답객체.text : 응답객체를 문자 타입으로 반환
+           ** Java의 응답이 String/null 일 경우 : JS에서 .json() 불가능
+           ** 반환타입을 ResponseBody<>로 포장 or JS에서 .text()로 받음
+
        (4) .then( data => { 실행문; } )
            - 타입변환된 자료를 매개변수로 받아 실행문 처리
        (5) .catch( error => { 실행문; } )

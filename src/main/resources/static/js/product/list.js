@@ -27,7 +27,7 @@ const getMap = async () => {
 
     // [2.1] 지도 생성
     var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
-        center: new kakao.maps.LatLng( position.coords.latitude, position.coords.longitude), // 지도의 중심좌표
+        center: new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude), // 지도의 중심좌표
         level: 5 // 지도의 확대 레벨
     });
 
@@ -56,10 +56,27 @@ const getMap = async () => {
 
     // [2.3.2] Map 반복문
     let markers = productList.map((product) => {
-        let marker = new kakao.maps.Marker({ position : new kakao.maps.LatLng(product.plat, product.plng) })
-        kakao.maps.event.addListener( marker , 'click' ,  ( ) => {
+        let marker = new kakao.maps.Marker({ position: new kakao.maps.LatLng(product.plat, product.plng) })
+        kakao.maps.event.addListener(marker, 'click', () => {
             alert(`클릭한 제품명은 : ${product.pname}`);
         })
+
+
+        // [ 250821 추가 ] 업로드 이미지 출력 ======================
+        const productBox = document.querySelector('#productBox')
+        let html = ""
+
+        if (product.images.length == 0) {
+            html += `<img src="/upload/basic_profile.jpg"/>`
+        } else {
+            for (let i = 0; i < product.images.length; i++) {
+                let img = product.images[i]
+                html += `<img src="/upload/${img}"/>`
+
+            }
+        }
+        productBox.innerHTML = html;
+
         return marker;
     })
 
@@ -81,7 +98,7 @@ const getMap = async () => {
 } // func end
 
 // [*] 함수 동기화를 위한 순서 실행 함수
-const _init = async () =>{
+const _init = async () => {
     await getList();    // 제품 정보 불러오기 우선 실행
     await getMap();
 }

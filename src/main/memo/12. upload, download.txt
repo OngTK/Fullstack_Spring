@@ -62,16 +62,27 @@
                 - ` uuid + "_" + multipartFile.getOriginalFilename().replaceAll("_", "-") `
                     : 중복 파일명에 대비하여 UUID와 함께 파일명을 지정하는 방법
         (3) 첨부파일 용량 제한
-        application.properties 에서 정의
-        ```
-        # [2] 업로드 파일 최대 용량 제한 20250819
-        # default 1MB
-        # 파일 마다의 용량 제한
-        spring.servlet.multipart.max-file-size = 10MB
+            application.properties 에서 정의
+            ```
+                # [2] 업로드 파일 최대 용량 제한 20250819
+                # default 1MB
+                # 파일 마다의 용량 제한
+                spring.servlet.multipart.max-file-size = 10MB
 
-        # 요청 마다의 용량제한,
-        # 한 요청에 여러 개의 파일이 존재할 수 있으므로
-        spring.servlet.mulipart.max-request-size = 100MB
+                # 요청 마다의 용량제한,
+                # 한 요청에 여러 개의 파일이 존재할 수 있으므로
+                spring.servlet.mulipart.max-request-size = 100MB
+            ```
+    2) JS에서 MultipartFile(첨부파일) Fetch 관련
+        ```js
+            const form = document.querySelector( 폼식별자명 )    : 일반 폼을 form 변수에 담음
+                // 자바와 통신할 경우, From 마크업 내 name 속성명과 dto 멤버변수 명이 일치해야 함
+            const formData = new FormData( form )               : 일반 form을 byte 타입의 DataForm으로 변환
+                // 속성 추가
+                // formData.append( 속성명, 값)
+
+            const option = {method : "POST", body : formData}
+                // header 생략 가능 : { "Content-Type" : "multipart/form-data" }
         ```
 
 [ Spring Download 구현 방법 ]

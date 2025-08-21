@@ -15,6 +15,7 @@
             <h3>제품보기</h3>
             <div id="map" style="width:100%;height:350px;"></div>
 
+            <div id = "productBox"></div>
         </div>
 
 

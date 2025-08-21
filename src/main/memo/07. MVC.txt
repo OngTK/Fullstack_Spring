@@ -27,14 +27,19 @@
             : JSP / 타임리프 / 머스테치 / React
         (2) Controller
             : @RestController / @Controller
-            : HTTP과 요청·응답의 통신, 매개변수/반환 타입 관리·변환
+            : HTTP과 요청·응답의 통신
+            : 매개변수/반환 타입 관리·변환
             : (타입) 유효성 검사, 예외처리 etc.
+            ** Controller는 다른 Controller를 호출하면 안됨!
         (3) Service
             : @Service
             : 비즈니스 로직(기능에 있어서의 실직적인 중요 코드)
             : CRUD, 데이터 검증, 연산, 알고리즘, 트랜잭션 etc
+            : 임시 비밀번호 생성
+            ** Service는 다른 Service를 호출할 수 있음!
         (4) Repository
             : @Repository
-            : 실질적인 Data 저장소 / 엔티티를 조작하는 코드
+            : 실질적인 Data 저장소
+            : 엔티티를 조작하는 코드
+            : SQL 조작
             : DAO / JPA / myBatis
-

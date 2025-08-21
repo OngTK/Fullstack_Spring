@@ -14,6 +14,7 @@ https://docs.google.com/spreadsheets/d/1xdLQnrAlXw0nD1sSvQCNxVm4wvMUkZhCgJy5hcEM
         - point 기능 구현
 
 250820
+https://docs.google.com/spreadsheets/d/1qN8Cm4EooJqndLipCcgzlAjhJTswmFlbqkmODE-GwnE/edit?usp=sharing
     upload/download 이론
     web
         - product 화면 구현
@@ -25,3 +26,9 @@ https://docs.google.com/spreadsheets/d/1xdLQnrAlXw0nD1sSvQCNxVm4wvMUkZhCgJy5hcEM
     ** controller 에서 다른 controller 를 소환하지 않는다!!
 
     과제 회원 프로필(사진) 구현
+
+250821
+    1교시
+        MVC 3tier의 역할 구분     - 07번 메모
+        list.jsp 이미지 불러오는 기능 수정
+        JS에서 MultipartFile(첨부파일) Fetch 관련 - 12번 메모
