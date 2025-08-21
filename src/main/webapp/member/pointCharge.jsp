@@ -28,7 +28,7 @@
                 </label>
                 <br />
             </form>
-            <button onclick="onCharge()"> 충전하기 </button>
+            <button id="checkoutButton" type="submit">결제하기</button>
         </div>
 
         <script src="/js/member/pointCharge.js"></script>
