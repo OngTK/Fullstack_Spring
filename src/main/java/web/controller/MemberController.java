@@ -119,6 +119,7 @@ public class MemberController {
         // [4.5] service 메소드 실행
         MemberDto memberDto = memberService.info(mno);
 
+        // [ 250820 추가 1 ] 내 정보에 이미지 불러오기
         // [4-(1)-1] 최신 사진 이미지 fileName 불러오기 (※ 250820 추가)
         String fileName = memberService.getFileName(mno);
         memberDto.setMimgname(fileName);
