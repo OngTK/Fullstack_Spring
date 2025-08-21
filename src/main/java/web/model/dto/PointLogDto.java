@@ -5,7 +5,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
 public class PointLogDto {
     // 멤버변수
     private int plno;

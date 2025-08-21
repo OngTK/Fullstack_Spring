@@ -31,7 +31,7 @@
                 - text/plain                        : 일반 text (Java에서 String을 반환)
                 - application/json                  : JSON 데이터 (REST API의 주 데이터)
                 - application/x-www-form-urlencoded : 폼 형식 데이터 (HTML <form> 마크업 )
-            - multipart/form-data                   : 첨부파일 업로드, 대용량 데이터(byte)
+                - multipart/form-data               : 첨부파일 업로드, 대용량 데이터(byte)
         (4) HTTP HOST : HTTP 이용시 통신을 요청하는 서버의 도메인 주소
 
     5) 사용처

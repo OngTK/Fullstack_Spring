@@ -32,3 +32,5 @@ https://docs.google.com/spreadsheets/d/1qN8Cm4EooJqndLipCcgzlAjhJTswmFlbqkmODE-G
         MVC 3tier의 역할 구분     - 07번 메모
         list.jsp 이미지 불러오는 기능 수정
         JS에서 MultipartFile(첨부파일) Fetch 관련 - 12번 메모
+
+    [ 실습6: 정보수정, 비밀번호수정 JS, 아이디찾기/비밀번호 찾기 기능/화면 구현 ] 과제 풀이
