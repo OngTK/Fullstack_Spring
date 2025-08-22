@@ -15,7 +15,7 @@ public class PaymentDao extends Dao {
     public int addPaylog(PaymentDto paymentDto){
         try{
             String sql = "insert into payment(mno, pamount) values (?,?);";
-            PreparedStatement ps =  conn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps =  conn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
             ps.setInt(1,paymentDto.getMno());
             ps.setInt(2,paymentDto.getPamount());
             if( ps.executeUpdate() == 1 ){
@@ -28,6 +28,6 @@ public class PaymentDao extends Dao {
         } catch (Exception e) {
             System.out.println("PaymentDao.addPaylog "+ e);
         }
-        return false;
+        return 0;
     } // func end
 }
