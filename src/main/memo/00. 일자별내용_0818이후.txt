@@ -34,3 +34,19 @@ https://docs.google.com/spreadsheets/d/1qN8Cm4EooJqndLipCcgzlAjhJTswmFlbqkmODE-G
         JS에서 MultipartFile(첨부파일) Fetch 관련 - 12번 메모
 
     [ 실습6: 정보수정, 비밀번호수정 JS, 아이디찾기/비밀번호 찾기 기능/화면 구현 ] 과제 풀이
+
+    TeamProject 기획 회의
+
+250822
+    1. Flow·순서도 작성
+    https://www.drawio.com/
+        - 기능에 따를 순서도 작성
+        - 화면에 순서도 작성
+
+    2. 피그마
+    https://www.figma.com/ko-kr/
+        - Front 프로토 타입 초안 용
+
+    3. 지라
+    https://www.atlassian.com/
+        - 프
