@@ -21,5 +21,5 @@ public class PostDto {
     // 추가 구성
     private String mid;     // 작성자 아이디
     private String cname;   // 카테고리 명
-    private boolean host;   // 보고있는 사람이 작성한 글인지 확인 (본인 글 여부)
+    private boolean host;   // 현재 게시물을 보고있는 클라이언트가 작성한 본인의 글인지 확인
 } // class end
