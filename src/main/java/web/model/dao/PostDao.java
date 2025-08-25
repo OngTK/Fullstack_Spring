@@ -76,6 +76,7 @@ public class PostDao extends Dao {
         } catch (Exception e) {
             System.out.println("PostDao.findAll " + e );
         }
+        return postList;
     } // func end
 
 } // class end
