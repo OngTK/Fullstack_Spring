@@ -263,7 +263,6 @@ insert into post (ptitle, pcontent, mno, cno) values
 
 select * from post;
 
-
 INSERT INTO reply (rcontent, mno, pno) VALUES
 -- 1번 게시물의 댓글 10개
 ('이 게시물 정말 유익하네요!', 1, 1),
@@ -284,3 +283,12 @@ INSERT INTO reply (rcontent, mno, pno) VALUES
 ('더 많은 자료를 찾을 수 있을까요?', 4, 2);
 
 select * from reply;
+
+select pno, ptitle, pcontent, pdate, pview, mid, cno from post, member where (post.mno = member.mno);
+
+select * from post, category where (post.cno = category.cno);
+
+select post.pno, post.ptitle, post.pcontent, post.pdate, post.pview, member.mid, category.cname
+from post join member on post.mno = member.mno join category ON post.cno = category.cno order by pno;
+
+select * from post p inner join member m on p.mno = m.mno order by pno desc;

@@ -2,10 +2,8 @@ package web.controller;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import web.model.dto.PageDto;
 import web.model.dto.PostDto;
 import web.service.PostService;
 
@@ -17,7 +15,7 @@ public class PostController {
     private final PostService postService;
 
     // [1] 게시물 등록
-    @PostMapping
+    @PostMapping("")
     public int writePost(@RequestBody PostDto postDto, HttpSession session) {
         System.out.println("PostController.writePost");
         System.out.println("postDto = " + postDto + ", session = " + session);
@@ -33,5 +31,11 @@ public class PostController {
         return postService.writePost(postDto);
     } // func end
 
+    // [2] 카테고리 별 게시물 조회
+    // defaultValue : QueryString 입력 값이 없을 경우 대비, 초기 값을 설정
+    @GetMapping("")
+    public PageDto findAllPost(@RequestParam(defaultValue = "1") int cno, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "5") int count){
+        return postService.findAllPost(cno, page, count);
+    } // func end
 
 } // class end

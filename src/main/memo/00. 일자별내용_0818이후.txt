@@ -53,6 +53,12 @@ https://docs.google.com/spreadsheets/d/1qN8Cm4EooJqndLipCcgzlAjhJTswmFlbqkmODE-G
 
 250825
 https://docs.google.com/spreadsheets/d/1JjS62_L2Z5Ds83bUBEBUbRDXZ6AwrUoG2vlzgW5Mrpw/edit?gid=1107437372#gid=1107437372
-   게시물
-   카테고리
-   댓글
+   SQL
+       게시물
+       카테고리
+       댓글
+   PostController / PostService / PostDao / PostDto
+        게시물 등록
+        카테고리별 게시물 조회 + 페이지네이션
+   PageDto
+        페이지네이션을 위한 Dto

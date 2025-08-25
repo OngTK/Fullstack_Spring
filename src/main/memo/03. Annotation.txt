@@ -116,12 +116,14 @@ Spring / Lombok 등 Annotation 출처를 조심하자!!
             - 처리가능요청 : QueryString, <form : 첨부파일O >
             - 지원 HTTP메소드 : Get / Post / Put / Delete
 
-        (2) @RequestParam( )
+        (2) @RequestParam
             - 단일 파라미터에 변수 바인딩
             - 함수의 매개변수명과 쿼리스트링의 매개변수명이 일치할 경우 생략가능
             - 기본형 : int / String / List / Map
             - 처리가능요청 : QueryString, <form : 첨부파일X >
             - 지원 HTTP메소드 : Get / Post / Put / Delete
+            - 250825 추가 (참고 : web > controller > PostController)
+                (defaultValue = "0") : 배개변수 입력이 없을 경우 default를 설정
 
             ① name = "URL매개변수명"
                 - URL상 ? 뒤에 매핑할 매개변수명
