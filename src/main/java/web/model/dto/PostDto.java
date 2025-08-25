@@ -1,0 +1,25 @@
+package web.model.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+// 게시물 정보를 갖는 클래스
+public class PostDto {
+    // 멤버변수
+    private int pno;
+    private String ptitle;
+    private String pcontent;
+    private String pdate;
+    private int pview;
+    private int mno;
+    private int cno;
+
+    // 추가 구성
+    private String mid;     // 작성자 아이디
+    private String cname;   // 카테고리 명
+    private boolean host;   // 보고있는 사람이 작성한 글인지 확인 (본인 글 여부)
+} // class end
