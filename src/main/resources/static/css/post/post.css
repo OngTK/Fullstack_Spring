@@ -1,0 +1,10 @@
+.pagenation{
+    width: 15rem;
+}
+
+.pageBtnBox {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0.25rem;
+}
