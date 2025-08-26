@@ -82,7 +82,20 @@ public class PostDao extends Dao {
     // [2-3] 카테고리별 data의 수 (검색O)
     public int getTotalCountSearch(int cno, String key, String keyword){
         try{
+            String sql = "select count(*) from post where cno = ? ";
+            // 동적 SQL
+            if( key.equals("ptitle") ){
+                sql += " and ptitle like ? ";
+            } else if ( key.equals("pcontent")){
+                sql += "and pcontent like ? ";
+            } // 그외 검색 속성이 존재하면 추가
+            System.out.println("PostDao.getTotalCountSearch " + sql);
 
+            PreparedStatement ps = conn.prepareCall(sql);
+            ps.setInt(1, cno);
+            ps.setString(2,"%" + keyword + "%");
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) return rs.getInt(1);
         } catch (Exception e){
             System.out.println("PostDao.getTotalCount " + e );
         }
@@ -91,12 +104,46 @@ public class PostDao extends Dao {
 
     // [2-4] 조건에 해당하는 게시물 조회 (검색O)
     public List<PostDto> findAllSearch (int cno, int startRow, int count, String key, String keyword){
+        List<PostDto> postList = new ArrayList<>();
         try{
+            String sql = "select * from post p inner join member m on p.mno = m.mno where p.cno=? ";
 
+            // 동적 SQL
+            if( key.equals("ptitle") ){
+                sql += " and ptitle like ? ";
+            } else if ( key.equals("pcontent")){
+                sql += "and pcontent like ? ";
+            } // 그외 검색 속성이 존재하면 추가
+            sql += "order by p.pno desc limit ?,? ";
+
+            System.out.println("PostDao.findAllSearch " + sql);
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,cno);
+            ps.setString(2,"%" + keyword + "%");
+            ps.setInt(3,startRow);
+            ps.setInt(4,count);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                PostDto postDto = new PostDto();
+                postDto.setMno(rs.getInt("mno"));
+                postDto.setCno(rs.getInt("cno"));
+                postDto.setPcontent(rs.getString("pcontent"));
+                postDto.setPno(rs.getInt("pno"));
+                postDto.setPtitle(rs.getString("ptitle"));
+                postDto.setPdate(rs.getString("pdate"));
+                postDto.setPview(rs.getInt("pview"));
+                postDto.setMid(rs.getString("mid"));
+
+                postList.add(postDto);
+
+            }
         } catch (Exception e){
             System.out.println("PostDao.getTotalCount " + e );
         }
-
+        return postList;
     } // func end
 
 } // class end

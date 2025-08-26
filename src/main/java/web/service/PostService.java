@@ -34,6 +34,8 @@ public class PostService {
         int totalCount = 0 ;
         List<PostDto> postList = new ArrayList<>();
         // ☆★ 250826 / 조건문을 통해, 검색이 있는 경우와 없는 경우를 분류
+        // 위치변경... [2.6] Dao에 자료 요청
+        // 매개변수 : cno, startRow(시작 인덱스), count(페이지 당 게시물 수)
         if( key == null && key.isEmpty() && keyword==null && keyword.isEmpty() ){
             // 검색 null == 검색을 하지 않을 때
             // [2.2] 총 자료 수 확인
@@ -56,12 +58,6 @@ public class PostService {
         // [2.5] 끝 버튼 구하기
         int endBtn = startBtn + btnCount -1 ;
         if( endBtn > totalPage ) endBtn = totalPage; //if endBtn이 totalpage보다 크면 endBtn을 그대로 사용
-        
-        
-        // [2.6] Dao에 자료 요청
-        // 매개변수 : cno, startRow(시작 인덱스), count(페이지 당 게시물 수)
-
-
 
         // [2.7] pageDto를 구성
         PageDto pageDto = new PageDto();
