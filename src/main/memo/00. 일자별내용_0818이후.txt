@@ -62,3 +62,8 @@ https://docs.google.com/spreadsheets/d/1JjS62_L2Z5Ds83bUBEBUbRDXZ6AwrUoG2vlzgW5M
         카테고리별 게시물 조회 + 페이지네이션
    PageDto
         페이지네이션을 위한 Dto
+
+250826
+https://docs.google.com/spreadsheets/d/1JjS62_L2Z5Ds83bUBEBUbRDXZ6AwrUoG2vlzgW5Mrpw/edit?gid=1107437372#gid=1107437372
+    검색기능 추가 > PostService
+

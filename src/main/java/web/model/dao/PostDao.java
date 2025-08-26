@@ -35,7 +35,7 @@ public class PostDao extends Dao {
         return 0; // 실패
     } // func end
 
-    // [2-1] 카테고리별 data의 수
+    // [2-1] 카테고리별 data의 수 (검색 X)
     public int getTotalCount(int cno){
         try{
             String sql = "select count(*) from post where cno = ? ";
@@ -49,7 +49,7 @@ public class PostDao extends Dao {
         return 0;
     } // func end
 
-    // [2-2] 조건에 해당하는 게시물 조회
+    // [2-2] 조건에 해당하는 게시물 조회  (검색 X)
     // startRow : 페이지당 조회 시작 인덱스
     public List<PostDto> findAll (int cno, int startRow, int count){
         List<PostDto> postList = new ArrayList<>();
@@ -77,6 +77,26 @@ public class PostDao extends Dao {
             System.out.println("PostDao.findAll " + e );
         }
         return postList;
+    } // func end
+
+    // [2-3] 카테고리별 data의 수 (검색O)
+    public int getTotalCountSearch(int cno, String key, String keyword){
+        try{
+
+        } catch (Exception e){
+            System.out.println("PostDao.getTotalCount " + e );
+        }
+        return 0;
+    } // func end
+
+    // [2-4] 조건에 해당하는 게시물 조회 (검색O)
+    public List<PostDto> findAllSearch (int cno, int startRow, int count, String key, String keyword){
+        try{
+
+        } catch (Exception e){
+            System.out.println("PostDao.getTotalCount " + e );
+        }
+
     } // func end
 
 } // class end
