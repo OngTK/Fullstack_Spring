@@ -36,16 +36,21 @@ public class PostService {
         // ☆★ 250826 / 조건문을 통해, 검색이 있는 경우와 없는 경우를 분류
         // 위치변경... [2.6] Dao에 자료 요청
         // 매개변수 : cno, startRow(시작 인덱스), count(페이지 당 게시물 수)
-        if( key == null && key.isEmpty() && keyword==null && keyword.isEmpty() ){
+        if( key != null && !key.isEmpty() && keyword!=null && !keyword.isEmpty() ){
+            // .(도트/접근 연산자)는 변수가 null 일 때, 함수를 사용한다는 것은 역설!
+            // nullPointException 발생
+            // ∴ 조건에 문을 부정으로 바꿈!!
+
+            // ☆★☆★☆★ 검색을 할 때
+            totalCount = postDao.getTotalCountSearch(cno, key, keyword);
+            postList = postDao.findAllSearch(cno, page, count, key, keyword);
+        } else {
             // 검색 null == 검색을 하지 않을 때
             // [2.2] 총 자료 수 확인
             totalCount = postDao.getTotalCount(cno);
             // [2.3]] dao를 통해서 자료의 개수를 반환
             postList = postDao.findAll(cno, startRow, count);
 
-        } else { // ☆★☆★☆★ 검색을 할 때
-            totalCount = postDao.getTotalCountSearch(cno, key, keyword);
-            postList = postDao.findAllSearch(cno, page, count, key, keyword);
         }
         
         // [2.3] 전체 페이지 수 구하기
