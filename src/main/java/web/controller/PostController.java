@@ -90,4 +90,23 @@ public class PostController {
 
     } // func end
 
+    // [4] 게시물 삭제
+    @DeleteMapping()
+    public boolean deletePost(@RequestParam int pno, HttpSession session){
+
+        // [4.1] 본인이 작성한 글인지 확인
+        // [4.1.1] session 정보 출력
+        Object obj = session.getAttribute("loginMno");
+        int loginMno = obj==null?0:(int)obj;
+
+        // [4.1.2] 삭제하려는 게시물의 mno 확인
+        PostDto postDto = postService.getPost(pno);
+        if(postDto.getMno() == loginMno ){
+            // [4.1.3] 게시물 작성 mno와 로그인mno가 일치하면 삭제를 실행
+            return postService.deletePost(pno);
+        } else {
+            return false;
+        }
+    }
+
 } // class end

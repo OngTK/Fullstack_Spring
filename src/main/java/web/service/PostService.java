@@ -31,12 +31,12 @@ public class PostService {
         // [2.1] 페이지 당 조회할 시작 인덱스 번호 계산
         int startRow = (page - 1) * count;
 
-        int totalCount = 0 ;
+        int totalCount = 0;
         List<PostDto> postList = new ArrayList<>();
         // ☆★ 250826 / 조건문을 통해, 검색이 있는 경우와 없는 경우를 분류
         // 위치변경... [2.6] Dao에 자료 요청
         // 매개변수 : cno, startRow(시작 인덱스), count(페이지 당 게시물 수)
-        if( key != null && !key.isEmpty() && keyword!=null && !keyword.isEmpty() ){
+        if (key != null && !key.isEmpty() && keyword != null && !keyword.isEmpty()) {
             // .(도트/접근 연산자)는 변수가 null 일 때, 함수를 사용한다는 것은 역설!
             // nullPointException 발생
             // ∴ 조건에 문을 부정으로 바꿈!!
@@ -52,23 +52,23 @@ public class PostService {
             postList = postDao.findAll(cno, startRow, count);
 
         }
-        
+
         // [2.3] 전체 페이지 수 구하기
         int totalPage = totalCount % count == 0 ? totalCount / count : totalCount / count + 1;
-        
-        int btnCount = 5 ; // 한 화면에 보여지는 page 최대 버튼 수 ( 1~5 / 6~10 )
+
+        int btnCount = 5; // 한 화면에 보여지는 page 최대 버튼 수 ( 1~5 / 6~10 )
         // [2.4] 시작 버튼 구하기
-        int startBtn = ( (page -1 ) / btnCount) * btnCount + 1 ;
-        
+        int startBtn = ((page - 1) / btnCount) * btnCount + 1;
+
         // [2.5] 끝 버튼 구하기
-        int endBtn = startBtn + btnCount -1 ;
-        if( endBtn > totalPage ) endBtn = totalPage; //if endBtn이 totalpage보다 크면 endBtn을 그대로 사용
+        int endBtn = startBtn + btnCount - 1;
+        if (endBtn > totalPage) endBtn = totalPage; //if endBtn이 totalpage보다 크면 endBtn을 그대로 사용
 
         // [2.7] pageDto를 구성
         PageDto pageDto = new PageDto();
-        pageDto.setCurrentPage( page );         // 현재 페이지 번호
-        pageDto.setTotalPage( totalPage );      // 전체 페이지 수
-        pageDto.setPerCount( count );           // 한 페이지 당 계시물 수
+        pageDto.setCurrentPage(page);         // 현재 페이지 번호
+        pageDto.setTotalPage(totalPage);      // 전체 페이지 수
+        pageDto.setPerCount(count);           // 한 페이지 당 계시물 수
         pageDto.setTotalCount(totalCount);      // 전체 게시물 수
         pageDto.setStartBtn(startBtn);          // 페이지네이션에서 시작 페이지 번호
         pageDto.setEndBtn(endBtn);              // 페이지네이션에서 끝 페이지 번호
@@ -84,8 +84,13 @@ public class PostService {
     } // func end
 
     // [3-2] 조회수 증가
-    public void incrementView(int pno){
+    public void incrementView(int pno) {
         postDao.incrementView(pno);
-    }
+    } // func end
+
+    // [4] 게시물 삭제
+    public boolean deletePost(int pno) {
+        return postDao.deletePost(pno);
+    } // func end
 
 } // class end
