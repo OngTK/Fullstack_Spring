@@ -7,6 +7,10 @@ import web.model.dto.PageDto;
 import web.model.dto.PostDto;
 import web.service.PostService;
 
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/post")
 @RequiredArgsConstructor // final 변수에 대하여 자동 생성자 주입
@@ -41,6 +45,49 @@ public class PostController {
                                @RequestParam(required = false) String key, 
                                @RequestParam(required = false) String keyword) {
         return postService.findAllPost(cno, page, count, key, keyword);
+    } // func end
+
+    // [3] 개별 조회
+    @GetMapping("/view")
+    public PostDto getPost(@RequestParam int pno, HttpSession session) {
+        // [3.1] Session 관련
+        // [3.1.1] sessiono에서 viewHistory 추출
+        // viewHistory : 클라이언트가 조회한 게시물 정보 저장소
+        Object object = session.getAttribute("viewHistory");
+
+        // [3.1.2] viewHistory 존재하지 않으면 HashMap 생성 / 존재하면 session에서 가져온 object를 map 으로 타입변환
+        Map<Integer, String> viewHistory;
+        if(object == null ){
+            viewHistory = new HashMap<>();
+        } else {
+            viewHistory = (Map<Integer, String>) object;
+        }
+
+        // [3.1.3] 오늘의 날짜
+        String today = LocalDate.now().toString(); // 현재 날짜를 반환
+        // [3.1.4] pno와 today를 조합하여, 조회 기록을 체크
+        String check = viewHistory.get(pno);
+        if( check == null || !check.equals(today) ){
+            // 조건 : 24시간 이내에 조회수가 1 만 증가 가능 (사용자 구분없이 1개의 브라우저에 대해 무조건 하루에 1)
+            // [3.2] 조회수 증가
+            postService.incrementView(pno);
+
+            // [3.1.5] Session에 조회수 기록
+            viewHistory.put(pno, today);
+            // [3.1.6] session 속성 업데이터
+            session.setAttribute("viewHistory",viewHistory);
+        }
+        
+        // [3.3] 요청자가 작성자 본인인지 확인을 위환 session 꺼내오기
+        Object object2 = session.getAttribute("loginMno");
+        int loginMno = object2==null ? 0 : (int)object2 ;
+
+        // [3.4] postDto 반환 func 실행 + 요청자 본인 확인
+        PostDto postDto = postService.getPost(pno);
+        if( postDto.getMno() == loginMno) postDto.setHost(true);
+
+        return postDto;
+
     } // func end
 
 } // class end

@@ -66,4 +66,17 @@ https://docs.google.com/spreadsheets/d/1JjS62_L2Z5Ds83bUBEBUbRDXZ6AwrUoG2vlzgW5M
 250826
 https://docs.google.com/spreadsheets/d/1JjS62_L2Z5Ds83bUBEBUbRDXZ6AwrUoG2vlzgW5Mrpw/edit?gid=1107437372#gid=1107437372
     검색기능 추가 > PostService
+    JSP / JS / CSS 추가
 
+250827
+https://docs.google.com/spreadsheets/d/1JjS62_L2Z5Ds83bUBEBUbRDXZ6AwrUoG2vlzgW5Mrpw/edit?usp=sharing
+
+    게시판 글쓰기 에디터
+    https://ckeditor.com/
+    네이버 에디터
+    https://summernote.org/
+
+    CDN 저장소
+    https://cdnjs.com/
+
+    게시물 개별조회/수정

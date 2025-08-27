@@ -291,4 +291,4 @@ select * from post, category where (post.cno = category.cno);
 select post.pno, post.ptitle, post.pcontent, post.pdate, post.pview, member.mid, category.cname
 from post join member on post.mno = member.mno join category ON post.cno = category.cno order by pno;
 
-select * from post p inner join member m on p.mno = m.mno order by pno desc;
+select * from post p inner join member m on p.mno = m.mno where p.cno=1 order by p.pno desc limit 0,5;

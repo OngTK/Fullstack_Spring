@@ -78,4 +78,14 @@ public class PostService {
         return pageDto;
     } // func end
 
+    // [3-1] 개별 조회
+    public PostDto getPost(int pno) {
+        return postDao.getPost(pno);
+    } // func end
+
+    // [3-2] 조회수 증가
+    public void incrementView(int pno){
+        postDao.incrementView(pno);
+    }
+
 } // class end
