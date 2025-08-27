@@ -93,4 +93,9 @@ public class PostService {
         return postDao.deletePost(pno);
     } // func end
 
+    // [5] 게시물 수정
+    public int updatePost(PostDto postDto, int loginMno) {
+        return postDao.updatePost(postDto, loginMno);
+    } // func end
+
 } // class end

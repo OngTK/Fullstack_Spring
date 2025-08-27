@@ -107,6 +107,14 @@ public class PostController {
         } else {
             return false;
         }
-    }
+    } // func end
+
+    // [5] 게시물 수정
+    @PutMapping()
+    public int updatePost(@RequestBody PostDto postDto, HttpSession session){
+        Object obj = session.getAttribute("loginMno");
+        int loginMno = obj==null?0:(int)obj;
+        return postService.updatePost(postDto, loginMno);
+    } // func end
 
 } // class end

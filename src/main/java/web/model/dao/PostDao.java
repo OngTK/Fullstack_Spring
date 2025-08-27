@@ -188,9 +188,9 @@ public class PostDao extends Dao {
         try {
             String sql = "delete from post where pno = ?;";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1,pno);
+            ps.setInt(1, pno);
             int result = ps.executeUpdate();
-            if(result == 1) return true;
+            if (result == 1) return true;
         } catch (Exception e) {
             System.out.println("PostDao.deletePost " + e);
         }
@@ -198,5 +198,21 @@ public class PostDao extends Dao {
     } // func end
 
     // [5] 개별 수정
+    public int updatePost(PostDto postDto, int loginMno) {
+        try {
+            String sql = "update post set ptitle=? , pcontent =?, cno=? where pno = ? and mno=?;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, postDto.getPtitle());
+            ps.setString(2, postDto.getPcontent());
+            ps.setInt(3,postDto.getCno());
+            ps.setInt(4,postDto.getPno());
+            ps.setInt(5,loginMno);
+            int result = ps.executeUpdate();
+            if(result == 1 ) return postDto.getPno();
+        } catch (Exception e) {
+            System.out.println("PostDao.updatePost " + e);
+        }
+        return 0;
+    } // func end
 
 } // class end
