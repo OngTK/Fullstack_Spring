@@ -106,4 +106,10 @@ public class PostService {
         return postDao.writeReply( reply );
     } // func end
 
+    // [7] 댓글 조회
+    // 조회중인 게시물(pno)의 댓글을 전체 조회
+    public List<Map<String, String>> findAllReply(int pno){
+        return postDao.findAllReply(pno);
+    } // func end
+
 } // class end

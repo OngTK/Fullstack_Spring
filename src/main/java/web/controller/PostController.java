@@ -9,6 +9,7 @@ import web.service.PostService;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -128,6 +129,13 @@ public class PostController {
         reply.put("mno", loginMno);
 
         return postService.writeReply(reply);
-    }
+    } // func end
+
+    // [7] 댓글 조회
+    // 조회중인 게시물(pno)의 댓글을 전체 조회
+    @GetMapping("reply")
+    public List<Map<String, String>> findAllReply(@RequestParam int pno){
+        return postService.findAllReply(pno);
+    } // func end
 
 } // class end

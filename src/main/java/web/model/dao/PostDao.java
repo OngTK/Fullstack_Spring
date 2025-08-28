@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -223,7 +224,7 @@ public class PostDao extends Dao {
         try {
             String sql = "insert into reply(rcontent, mno, pno) VALUES (?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, reply.get("rcontent"));
+            ps.setString(1,reply.get("rcontent"));
             ps.setString(2,reply.get("mno"));
             ps.setString(3,reply.get("pno"));
             int count = ps.executeUpdate();
@@ -239,8 +240,25 @@ public class PostDao extends Dao {
 
     // [7] 댓글 조회
     // 조회중인 게시물(pno)의 댓글을 전체 조회
-    public List<Map<String, String>> findAllReply(){
-
+    public List<Map<String, String>> findAllReply(int pno){
+        try{
+            String sql = "select * from reply where pno = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, pno);
+            ResultSet rs = ps.executeQuery();
+            List replies = new ArrayList();
+            while(rs.next()){
+                Map<String, String> reply = new HashMap<>();
+                reply.put("rcontent", rs.getString("rcontent"));
+                reply.put("rdate", rs.getString("rdate"));
+                reply.put("rno", rs.getString("rno"));
+                reply.put("mno", rs.getString("mno"));
+                replies.add(reply);
+            }
+            return replies;
+        } catch (Exception e) {
+            System.out.println("PostDao.findAllReply " + e);
+        }
         return null;
     } // func end
 
