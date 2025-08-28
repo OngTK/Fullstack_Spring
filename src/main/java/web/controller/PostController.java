@@ -47,6 +47,7 @@ public class PostController {
         return postService.findAllPost(cno, page, count, key, keyword);
     } // func end
 
+    // 250827 추가
     // [3] 개별 조회
     @GetMapping("/view")
     public PostDto getPost(@RequestParam int pno, HttpSession session) {
@@ -116,5 +117,17 @@ public class PostController {
         int loginMno = obj==null?0:(int)obj;
         return postService.updatePost(postDto, loginMno);
     } // func end
+
+    // 250828 추가
+    // [6] 댓글 등록
+    @PostMapping("/reply")
+    public int writeReply(@RequestBody Map<String, String> reply, HttpSession session){
+        if(session.getAttribute("loginMno") == null )return 0;
+        Object obj = session.getAttribute("loginMno");
+        String loginMno = obj + "" ;
+        reply.put("mno", loginMno);
+
+        return postService.writeReply(reply);
+    }
 
 } // class end

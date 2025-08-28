@@ -9,6 +9,7 @@ import web.model.dto.PostDto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor // lombok, final 변수 생성자 자동 생성
@@ -78,6 +79,7 @@ public class PostService {
         return pageDto;
     } // func end
 
+    // 250827 추가
     // [3-1] 개별 조회
     public PostDto getPost(int pno) {
         return postDao.getPost(pno);
@@ -96,6 +98,12 @@ public class PostService {
     // [5] 게시물 수정
     public int updatePost(PostDto postDto, int loginMno) {
         return postDao.updatePost(postDto, loginMno);
+    } // func end
+
+    // 250828 추가
+    // [6] 댓글 등록
+    public int writeReply(Map<String, String> reply ){
+        return postDao.writeReply( reply );
     } // func end
 
 } // class end

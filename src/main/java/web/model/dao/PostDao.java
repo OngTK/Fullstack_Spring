@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class PostDao extends Dao {
@@ -146,6 +147,7 @@ public class PostDao extends Dao {
         return postList;
     } // func end
 
+    // 250827 추가
     // [3-1] 개별 조회
     public PostDto getPost(int pno) {
         try {
@@ -204,15 +206,42 @@ public class PostDao extends Dao {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, postDto.getPtitle());
             ps.setString(2, postDto.getPcontent());
-            ps.setInt(3,postDto.getCno());
-            ps.setInt(4,postDto.getPno());
-            ps.setInt(5,loginMno);
+            ps.setInt(3, postDto.getCno());
+            ps.setInt(4, postDto.getPno());
+            ps.setInt(5, loginMno);
             int result = ps.executeUpdate();
-            if(result == 1 ) return postDto.getPno();
+            if (result == 1) return postDto.getPno();
         } catch (Exception e) {
             System.out.println("PostDao.updatePost " + e);
         }
         return 0;
+    } // func end
+
+    // 250828 추가
+    // [6] 댓글 등록
+    public int writeReply(Map<String, String> reply) {
+        try {
+            String sql = "insert into reply(rcontent, mno, pno) VALUES (?,?,?)";
+            PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, reply.get("rcontent"));
+            ps.setString(2,reply.get("mno"));
+            ps.setString(3,reply.get("pno"));
+            int count = ps.executeUpdate();
+            if ( count >0 ){
+                ResultSet rs = ps.getGeneratedKeys();
+                if(rs.next()) return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println("PostDao.writeReply " + e);
+        }
+        return 0;
+    } // func end
+
+    // [7] 댓글 조회
+    // 조회중인 게시물(pno)의 댓글을 전체 조회
+    public List<Map<String, String>> findAllReply(){
+
+        return null;
     } // func end
 
 } // class end
