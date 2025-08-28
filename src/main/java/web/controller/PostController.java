@@ -123,6 +123,7 @@ public class PostController {
     // [6] 댓글 등록
     @PostMapping("/reply")
     public int writeReply(@RequestBody Map<String, String> reply, HttpSession session){
+        System.out.println("reply = " + reply + ", session = " + session);
         if(session.getAttribute("loginMno") == null )return 0;
         Object obj = session.getAttribute("loginMno");
         String loginMno = obj + "" ;
@@ -133,7 +134,7 @@ public class PostController {
 
     // [7] 댓글 조회
     // 조회중인 게시물(pno)의 댓글을 전체 조회
-    @GetMapping("reply")
+    @GetMapping("/reply")
     public List<Map<String, String>> findAllReply(@RequestParam int pno){
         return postService.findAllReply(pno);
     } // func end

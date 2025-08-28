@@ -242,7 +242,7 @@ public class PostDao extends Dao {
     // 조회중인 게시물(pno)의 댓글을 전체 조회
     public List<Map<String, String>> findAllReply(int pno){
         try{
-            String sql = "select * from reply where pno = ?";
+            String sql = "select * from reply r inner join member m on r.mno = m.mno where pno = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, pno);
             ResultSet rs = ps.executeQuery();
@@ -253,6 +253,7 @@ public class PostDao extends Dao {
                 reply.put("rdate", rs.getString("rdate"));
                 reply.put("rno", rs.getString("rno"));
                 reply.put("mno", rs.getString("mno"));
+                reply.put("mid",rs.getString("mid"));
                 replies.add(reply);
             }
             return replies;

@@ -20,7 +20,7 @@ const myinfo = async () => {
         
         // [※ 250819 포인트 표시 기능 추가]
         const point = await mnoPoint()
-        console.log(point)
+        // console.log(point)
 
         // [※ 250820 프로필 사진 기능 추가]
         let imgSrc = '';
@@ -84,7 +84,7 @@ const mnoPoint = async () => {
         const option = { method: "GET" }
         const r = await fetch("/point/totalpoint", option)
         const d = await r.text()
-        console.log(d)
+        // console.log(d)
         html += `${d}`
     } catch (error) {
         alert("[경고] 관리자에게 문의하세요. \t" + error)
