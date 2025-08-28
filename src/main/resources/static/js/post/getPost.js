@@ -35,7 +35,7 @@ const getPost = async () => {
         pcontentOutput.innerHTML = `${d.pcontent}`
 
         // [1.4] 본인의 글이면 수정/삭제 버튼 생성
-        if( d.host == true ){
+        if (d.host == true) {
             document.querySelector(".etcBtn").innerHTML = `
             <button type="button" onclick="location.href='update.jsp?pno=${pno}'"> 수정하기 </button>
             <button type="button" onclick="deletePost()"> 삭제하기 </button>`
@@ -47,15 +47,27 @@ const getPost = async () => {
 getPost()
 
 // [4] 게시물 삭제
-
 const deletePost = async () => {
 
+    try {
+        const opt = { method: "DELETE" }
+        const r = await fetch(`/post?pno=${pno}`, opt);
+        const d = await r.json();
+        if ( d == true) {
+            alert("게시물 삭제 성공")
+            location.href = "/post/post.jsp?cno=1"
+        } else {
+            alert("게시물 삭제 실패")
+        }
+    } catch (error) {
+        console.log(error)
+    }
 
-}
+} // func end
 
 // [2] 댓글 조회
 const findAllReply = async () => {
-        console.log('findAllReply func exe')
+    console.log('findAllReply func exe')
 
     const replyPrintArea = document.querySelector("#replyPrintArea")
 
@@ -86,14 +98,14 @@ findAllReply()
 
 // [3] 댓글쓰기
 const writeReply = async () => {
-        console.log('writeReply func exe')
+    console.log('writeReply func exe')
 
     // [3.1] 댓글 가져오기
     const rcontentInput = document.querySelector("#rcontent");
     const rcontent = rcontentInput.value;
     try {
         // [3.2] fetch
-        const obj = { rcontent , pno }
+        const obj = { rcontent, pno }
         const opt = {
             method: "POST",
             headers: { "Content-Type": "application/json" },
